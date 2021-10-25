@@ -1,17 +1,15 @@
 <template>
   <div>
+    <!-- NAVBAR COMPONENT -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <a class="navbar-brand" href="#">
         <img
-          src="./../assets/amblem_400x400.jpg"
-          width="80"
-          height="80"
+          src="./../assets/İstanbul_Medipol_Üniversitesi_logosu.jpg"
+          width="260"
+          height="100"
           alt=""
         />
       </a>
-      <a id="navbarTitleID" class="navbar-brand" href="#"
-        >Istanbul Medipol University Library Service Department</a
-      >
       <button
         class="navbar-toggler"
         type="button"
@@ -51,8 +49,16 @@
         <b-button id="loginButton" v-b-modal.modal-center>Login</b-button>
       </div>
     </nav>
+
+    <!-- MODAL COMPONENT -->
     <div>
-      <b-modal id="modal-center" centered title="BootstrapVue" hide-footer hide-header>
+      <b-modal
+        id="modal-center"
+        centered
+        title="BootstrapVue"
+        hide-footer
+        hide-header
+      >
         <form>
           <h2>Login</h2>
           <div class="form-group">
@@ -72,7 +78,9 @@
               placeholder="Password"
             />
           </div>
-          <button id="loginSubmitButton" type="submit" class="btn btn-primary">Submit</button>
+          <button id="loginSubmitButton" type="submit" class="btn btn-primary">
+            Submit
+          </button>
         </form>
       </b-modal>
     </div>
@@ -135,30 +143,37 @@ li {
   color: rgb(255, 255, 255) !important;
 }
 
-#loginButton:hover{
+#loginButton:hover {
   background: rgb(0, 119, 255) !important;
   color: white !important;
 }
 
-#loginSubmitButton{
+#loginSubmitButton {
   width: 100%;
   border-radius: 20px !important;
+  background-color: rgb(25, 23, 126) !important;
+  color: rgb(255, 255, 255) !important;
 }
 
-.form-group{
+#loginSubmitButton:hover {
+  background: rgb(0, 119, 255) !important;
+  color: white !important;
+}
+
+.form-group {
   padding: 20px 0px 20px 0px;
 }
 
-input{
+input {
   border-radius: 20px !important;
   text-indent: 15px;
 }
 
-input[type="password"]{
+input[type="password"] {
   margin-bottom: 20px;
 }
 
-form{
+form {
   padding: 20px;
 }
 
@@ -170,7 +185,7 @@ img {
   display: block !important;
 }
 
-h2{
+h2 {
   text-align: center;
   margin-bottom: 50px !important;
 }

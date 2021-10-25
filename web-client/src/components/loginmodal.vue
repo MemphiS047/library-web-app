@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-        DENEME
+        LOGINMODAL.VUE
     </div>
   </div>
 </template>

@@ -1,8 +1,10 @@
 <template>
-  <navbar/>
+  <div>
+    <navbar />
+  </div>
 </template>
 <script>
-import navbar from './navbar.vue'
+import navbar from "./navbar.vue";
 export default {
   components: {
     navbar,
@@ -11,7 +13,7 @@ export default {
 </script>
 
 <style>
-html{
-  background-color: #F0F0F0 !important;
+html {
+  background-color: #f0f0f0 !important;
 }
 </style>
