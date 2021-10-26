@@ -2,10 +2,6 @@
 node_modules
 /dist
 
-# ignoring assets folder (photos, fonts)
-assets
-
-
 # local env files
 .env.local
 .env.*.local
