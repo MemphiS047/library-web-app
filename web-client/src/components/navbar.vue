@@ -5,7 +5,7 @@
       <a class="navbar-brand" href="#">
         <img
           src="./../assets/İstanbul_Medipol_Üniversitesi_logosu.jpg"
-          width="260"
+          width="266"
           height="100"
           alt=""
         />
@@ -22,30 +22,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Reservation
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Book Database
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Announcement
-            </a>
-          </li>
-        </ul>
-        <!-- <button
-          v-on:click="toggle()"
-          class="btn btn-outline-success"
-          type="button"
-        >
-          {{ loginButtonPressed }}
-        </button> -->
+      <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sign In</a>
+        </li>
+      </ul>
         <b-button id="loginButton" v-b-modal.modal-center>Login</b-button>
       </div>
     </nav>
@@ -62,6 +43,10 @@
         <form>
           <h2>Login</h2>
           <div class="form-group">
+            <strong
+              ><label class="form-label">Email or Student ID</label></strong
+            >
+
             <input
               type="email"
               class="form-control"
@@ -71,6 +56,7 @@
             />
           </div>
           <div class="form-group">
+            <strong><label class="form-label">Password</label></strong>
             <input
               type="password"
               class="form-control"
@@ -89,13 +75,14 @@
 
 <script>
 export default {
+  name: "navbar",
   data() {
     return {
       loginButtonPressed: false,
     };
   },
   methods: {
-    toggle: function() {
+    toggle: function () {
       console.log(!this.loginButtonPressed);
       if (this.loginButtonPressed) {
         this.loginButtonPressed = false;
@@ -188,5 +175,9 @@ img {
 h2 {
   text-align: center;
   margin-bottom: 50px !important;
+}
+
+.form-label {
+  margin-left: 10px !important;
 }
 </style>
