@@ -34,4 +34,10 @@ export default {
 a {
   color: white !important;
 }
+
+#secondaryNavbar{
+  width: 100% !important;
+  position: absolute;
+}
+
 </style>
