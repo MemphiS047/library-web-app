@@ -12,17 +12,22 @@
             </div>
             <div class="col">
               <p>
-                You can do your research from this section of the library it
-                provides comprehensive searching <br> features.The library search
-                engine uses various other search engines in order to  provide
-                <br> related results and provide a large sets of result
+                Medipol Library Search Engine (MLSE) provides a extensive user experience for students
+                and <br> academecians research works. MLSE utilize various search engines power to provide comprehensive
+                <br> research experience and most related and large set of results 
               </p>
             </div>
           </div>
         </div>
       </div>
       <div>
-        <searchsectionFormVue/>   
+        <searchsectionFormVue />
+      </div>
+      <div class="searchSectionNavigationDiv">
+        <a class="searchNavigationElement">Catalog</a>
+        <a class="searchNavigationElement">Article & Publishers</a>
+        <a class="searchNavigationElement">Database</a>
+        <a class="searchNavigationElement">E-Library</a>
       </div>
     </div>
   </div>
@@ -32,16 +37,36 @@
 import searchsectionFormVue from "./searchsectionForm.vue";
 export default {
   name: "searchsection",
-  components : {
-      searchsectionFormVue,
-  }
+  components: {
+    searchsectionFormVue,
+  },
 };
 </script>
 
 <style>
+.searchSectionNavigationDiv {
+  padding-left: 60px;
+}
+.searchNavigationElement {
+  width: 73px;
+  height: 22px;
+  left: 21px;
+  top: 128px;
+  padding: 10px;
+  font-family: Manjari;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 22px;
+  color: #0d1e63;
+  text-decoration: none;
+}
+.searchSectionNavigationLinks {
+  background-color: red;
+}
 .sectionDiv {
   position: relative;
-  width: 1337px;
+  width: 1317px;
   height: 600px;
   background: rgba(13, 30, 99, 0.15);
   border: 3px solid #0d1e63;

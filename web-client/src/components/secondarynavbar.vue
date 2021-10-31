@@ -38,6 +38,7 @@ a {
 #secondaryNavbar{
   width: 100% !important;
   position: absolute;
+  z-index: 2;
 }
 
 </style>

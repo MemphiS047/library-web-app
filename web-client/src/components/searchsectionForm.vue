@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-row bd-highlight mb-3">
-    <div class="p-2 bd-highlight">
+    <div id="searchInputflex" class="p-2 bd-highlight">
       <form>
         <div class="form-group">
           <input
@@ -10,6 +10,7 @@
             aria-describedby="emailHelp"
             placeholder="Enter what you want to search"
           />
+          
         </div>
       </form>
     </div>
@@ -31,6 +32,7 @@ export default {
 .d-flex {
   margin-top: 120px;
   margin-left: 30px;
+  height: 90px;
 }
 
 input {
@@ -42,6 +44,14 @@ input {
   border-radius: 10px !important;
 }
 
+/* 
+Tied to flex item inside the flex box, 
+it enables search button to get close to the
+form input 
+*/
+#searchInputflex {
+  width: 750px !important;
+}
 #searchButton {
   margin-top: 40px;
   width: 107px;
