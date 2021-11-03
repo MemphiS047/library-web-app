@@ -1,22 +1,21 @@
 <template>
   <div class="d-flex flex-row bd-highlight mb-3">
     <div id="searchInputflex" class="p-2 bd-highlight">
-      <form>
+      <form @submit.prevent="submitSearchForm">
         <div class="form-group">
           <input
-            type="email"
+            v-model="searchInput"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter what you want to search"
           />
-          
         </div>
       </form>
     </div>
     <div class="p-2 bd-highlight">
-      <button id="searchButton" type="submit" class="btn btn-primary">
-        Submit
+      <button id="searchButton" class="btn btn-primary" @click="formSubmitButton">
+        Search
       </button>
     </div>
   </div>
@@ -25,6 +24,24 @@
 <script>
 export default {
   name: "searchsectionVue",
+  data() {
+    return {
+      searchInput: ''
+      
+    };
+  },
+  methods: {
+    submitSearchForm(){
+        console.log(this.searchInput);
+    },
+
+    // When searchButton is clicked (catching with @click event) this
+    // function is triggered which triggers the submitSearchForm method
+    // tied to form element which can be found in the <form> elements property
+    formSubmitButton(){
+        this.submitSearchForm();
+    }
+  }
 };
 </script>
 
