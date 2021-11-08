@@ -22,17 +22,17 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-      <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sign In</a>
-        </li>
-      </ul>
+        <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sign In</a>
+          </li>
+        </ul>
         <b-button id="loginButton" v-b-modal.modal-center>Login</b-button>
       </div>
     </nav>
 
     <!-- MODAL COMPONENT -->
-    <div>
+    <div class="modalDiv">
       <b-modal
         id="modal-center"
         centered
@@ -48,8 +48,8 @@
             >
 
             <input
-              type="email"
-              class="form-control"
+              type="text"
+              class="form-control loginInput"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Student number or email"
@@ -59,7 +59,7 @@
             <strong><label class="form-label">Password</label></strong>
             <input
               type="password"
-              class="form-control"
+              class="form-control loginInput"
               id="exampleInputPassword1"
               placeholder="Password"
             />
@@ -82,7 +82,7 @@ export default {
     };
   },
   methods: {
-    toggle: function () {
+    toggle: function() {
       console.log(!this.loginButtonPressed);
       if (this.loginButtonPressed) {
         this.loginButtonPressed = false;
@@ -131,7 +131,7 @@ li {
 }
 
 #loginButton:hover {
-  background: rgb(0, 119, 255) !important;
+  background: rgb(105, 109, 161) !important;
   color: white !important;
 }
 
@@ -150,8 +150,18 @@ li {
 .form-group {
   padding: 20px 0px 20px 0px;
 }
-
-input {
+.modalDiv{
+  width: 100%;
+  height: 100%;
+}
+.loginInput {
+  text-indent: 15px;
+  width: 100%;
+  height: 50px;
+  top: 60px;
+  border: 1px solid #000000 !important;
+  box-sizing: border-box !important;
+  border-radius: 10px !important;
   border-radius: 20px !important;
   text-indent: 15px;
 }
@@ -166,10 +176,6 @@ form {
 
 img {
   margin-right: 15px !important;
-}
-
-.modal {
-  display: block !important;
 }
 
 h2 {

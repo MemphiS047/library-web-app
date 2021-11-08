@@ -5,7 +5,7 @@
         <div class="form-group">
           <input
             v-model="searchInput"
-            class="form-control"
+            class="form-control searchFormInput"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter what you want to search"
@@ -14,7 +14,11 @@
       </form>
     </div>
     <div class="p-2 bd-highlight">
-      <button id="searchButton" class="btn btn-primary" @click="formSubmitButton">
+      <button
+        id="searchButton"
+        class="btn btn-primary"
+        @click="formSubmitButton"
+      >
         Search
       </button>
     </div>
@@ -26,33 +30,33 @@ export default {
   name: "searchsectionVue",
   data() {
     return {
-      searchInput: ''
-      
+      searchInput: "",
     };
   },
   methods: {
-    submitSearchForm(){
-        console.log(this.searchInput);
+    submitSearchForm() {
+      console.log(this.searchInput);
     },
 
     // When searchButton is clicked (catching with @click event) this
     // function is triggered which triggers the submitSearchForm method
     // tied to form element which can be found in the <form> elements property
-    formSubmitButton(){
-        this.submitSearchForm();
-    }
-  }
+    formSubmitButton() {
+      this.submitSearchForm();
+    },
+  },
 };
 </script>
 
 <style>
-.searchFormFlex{
+.searchFormFlex {
   margin-top: 120px;
   margin-left: 30px;
   height: 90px;
 }
 
-input {
+.searchFormInput {
+  text-indent: 15px;
   width: 720px !important;
   height: 50px;
   top: 60px;
