@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-row bd-highlight mb-3">
+  <div class="d-flex flex-row bd-highlight mb-3 searchFormFlex">
     <div id="searchInputflex" class="p-2 bd-highlight">
       <form @submit.prevent="submitSearchForm">
         <div class="form-group">
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style>
-.d-flex {
+.searchFormFlex{
   margin-top: 120px;
   margin-left: 30px;
   height: 90px;
