@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-3"></div>
         <div class="col-10">
-          Deneme
+          <mainpageAnnouncements/>
         </div>
         <div class="col-3"></div>
       </div>
@@ -29,12 +29,15 @@
 import navbar from "./navbar.vue";
 import secondarynavbar from "./secondarynavbar.vue";
 import searchsection from "./searchsection.vue";
+import mainpageAnnouncements from './mainpageAnnouncements.vue';
+
 export default {
   name: "mainpage",
   components: {
     navbar,
     secondarynavbar,
     searchsection,
+    mainpageAnnouncements
   },
 };
 </script>
