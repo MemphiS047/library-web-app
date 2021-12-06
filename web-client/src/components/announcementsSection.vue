@@ -30,6 +30,8 @@ export default {
   width: 100%;
   height: 230px;
   padding: 30px;
+  margin-top: 20px !important;
+  /* margin-bottom: 20px !important; */
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
@@ -41,6 +43,7 @@ export default {
   height: 27px;
   left: 27px;
   top: 39px;
+  padding: 0px 10px 0px 10px;
 
   font-family: Manjari;
   font-style: normal;
@@ -57,6 +60,7 @@ export default {
   height: 102px;
   left: 0px;
   top: 28px;
+  padding: 0px 10px 0px 10px;
 
   font-family: Manjari;
   font-style: normal;
@@ -71,6 +75,8 @@ export default {
   height: 20px;
   left: 1153px;
   top: 172px;
+  padding: 0px 10px 0px 10px;
+
   cursor: pointer;
   font-family: Manjari;
   font-style: normal;

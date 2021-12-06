@@ -2,25 +2,27 @@
   <div>
     <navbar />
     <secondarynavbar />
-    <!-- MAIN PAGE SEARCH SECTION -->
-    <div class="container">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-10">
-          <searchsection />
+    <div>
+      <!-- MAIN PAGE SEARCH SECTION -->
+      <div class="container">
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-10">
+            <searchsection />
+          </div>
+          <div class="col-3"></div>
         </div>
-        <div class="col-3"></div>
       </div>
-    </div>
     
-    <!-- MAIN PAGE CONTENT -->
-    <div class="container">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-10">
-          <mainpageAnnouncements/>
+      <!-- MAIN PAGE CONTENT -->
+      <div class="container">
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-10">
+            <mainpageAnnouncements/>
+          </div>
+          <div class="col-3"></div>
         </div>
-        <div class="col-3"></div>
       </div>
     </div>
   </div>
