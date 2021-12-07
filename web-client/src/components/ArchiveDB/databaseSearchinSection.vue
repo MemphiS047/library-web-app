@@ -3,7 +3,7 @@
     <span class="searchSectionDBTitle">Medipol Library Database</span>
     <div class="d-flex flex-row searchSectionDBFlex">
         <input class="databaseSearchingInput" type="text" placeholder="Enter what you want to search">
-        <button id="searchButton" v-b-modal.modal-center>Search</button>
+        <button id="searchButton">Search</button>
     </div>
     <a class="advancedSearchLink">Advanced Search</a>
   </div>
