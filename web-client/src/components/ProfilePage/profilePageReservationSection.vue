@@ -4,15 +4,15 @@
       <div class="row">
         <div class="col">
           <div class="row">
-            <span class="resourceTitle">Machine Learning : The New AI</span>
+            <span class="resourceTitle">Room A</span>
           </div>
           <div class="row">
-            <span class="resourceAuthor">Ethem Alpaydin</span>
+            <span class="resourceAuthor">10:00 - 11:00</span>
           </div>
         </div>
         <div class="col">
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
-            <button id="retrunButton">Return</button>
+            <button id="retrunButton">Cancel</button>
           </div>
         </div>
       </div>

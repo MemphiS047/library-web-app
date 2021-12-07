@@ -2,11 +2,72 @@
   <div>
     <navbar />
     <secondarynavbar />
+    <!-- PROFILE PAGE BANNER -->
     <div class="container">
       <div class="row">
         <div class="col-3"></div>
         <div class="col-10">
           <profilePageBanner />
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <!-- BORROWED BOOKS -->
+    <div class="container">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-10">
+          <span>Borrowed Books</span>
+          <div class="row">
+            <profilePageItemSection />
+          </div>
+          <div class="row">
+            <profilePageItemSection />
+          </div>
+          <div class="row">
+            <profilePageItemSection />
+          </div>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <!-- RESERVATIONS -->
+    <div class="container">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-10">
+          <span>Reservations</span>
+          <div class="row">
+            <profilePageReservationSection />
+          </div>
+          <div class="row">
+            <profilePageReservationSection />
+          </div>
+          <div class="row">
+            <profilePageReservationSection />
+          </div>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <!-- FAVORITES -->
+    <div class="container">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-10">
+          <span>Favorites</span>
+          <div class="row">
+            <profilePageFavoriteSectionVue />
+          </div>
+          <div class="row">
+            <profilePageFavoriteSectionVue />
+          </div>
+          <div class="row">
+            <profilePageFavoriteSectionVue />
+          </div>
         </div>
         <div class="col-3"></div>
       </div>
@@ -18,12 +79,18 @@
 import navbar from "./../navbar.vue";
 import secondarynavbar from "./../secondarynavbar.vue";
 import profilePageBanner from "./profilepageBanner.vue";
+import profilePageItemSection from "./profilepageItemSection.vue";
+import profilePageReservationSection from "./profilePageReservationSection.vue";
+import profilePageFavoriteSectionVue from "./profilePageFavoriteSection.vue";
 export default {
   name: "profilePage",
   components: {
     navbar,
     secondarynavbar,
-    profilePageBanner
+    profilePageBanner,
+    profilePageItemSection,
+    profilePageReservationSection,
+    profilePageFavoriteSectionVue
   },
 };
 </script>

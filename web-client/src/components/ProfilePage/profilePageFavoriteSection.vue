@@ -12,7 +12,7 @@
         </div>
         <div class="col">
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
-            <button id="retrunButton">Return</button>
+            <img src="./../../assets/favorite.svg" class="favoriteIcon">
           </div>
         </div>
       </div>
@@ -27,6 +27,10 @@ export default {
 </script>
 
 <style>
+.favoriteIcon{
+    height: 38px;
+    width: 38px;
+}
 .resourceSectionFlex {
   margin-top: 5px;
 }
