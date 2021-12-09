@@ -17,8 +17,11 @@
     <div class="container">
       <div class="row">
         <div class="col-3"></div>
-        <div class="col-10">
-          <span>Borrowed Books</span>
+        <div class="col-10 profilePageCol">
+          <div class="profilePageTitles">
+            <span>Borrowed Items</span>
+            <hr>
+          </div>
           <div class="row">
             <profilePageItemSection />
           </div>
@@ -37,8 +40,11 @@
     <div class="container">
       <div class="row">
         <div class="col-3"></div>
-        <div class="col-10">
-          <span>Reservations</span>
+        <div class="col-10 profilePageCol">
+          <div class="profilePageTitles">
+            <span>Reservations</span>
+            <hr>
+          </div>
           <div class="row">
             <profilePageReservationSection />
           </div>
@@ -57,8 +63,11 @@
     <div class="container">
       <div class="row">
         <div class="col-3"></div>
-        <div class="col-10">
-          <span>Favorites</span>
+        <div class="col-10 profilePageCol">
+          <div class="profilePageTitles">
+            <span>Favorites</span>
+            <hr>
+          </div>
           <div class="row">
             <profilePageFavoriteSectionVue />
           </div>
@@ -97,20 +106,15 @@ export default {
 
 <style>
 span {
-  /* Anouncements & News */
   width: 400px;
   height: 33px;
   left: 31px;
   top: 33px;
-
   font-family: Manjari;
   font-style: normal;
   font-weight: normal;
   font-size: 30px;
   line-height: 33px;
-
-  /* identical to box height */
-
   color: #000000;
 }
 .list-group {
@@ -132,7 +136,12 @@ span {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
-
+.profilePageTitles {
+  margin-top: 40px;
+}
+hr{
+  padding: 1px
+}
 .profilePageSectionTitle {
   position: absolute;
   width: 653px;
@@ -147,6 +156,11 @@ span {
   line-height: 33px;
   color: #000000;
 }
+
+.profilePageCol {
+  width: 100% !important;
+}
+
 .profileBox {
   position: relative;
   width: 1200px;
