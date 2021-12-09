@@ -1,9 +1,12 @@
 <template>
-<!-- <mainpage></mainpage> -->
-<!-- <announcementsMainPage></announcementsMainPage> -->
-<!-- <databasePage></databasePage> -->
-<!-- <profilePage></profilePage> -->
-<openPositionsPage></openPositionsPage>
+  <!-- <mainpage></mainpage> -->
+  <!-- <announcementsMainPage></announcementsMainPage> -->
+  <!-- <databasePage></databasePage> -->
+  <!-- <profilePage></profilePage> -->
+  <!-- <openPositionsPage></openPositionsPage> -->
+  <router-view to="/home">
+  HOME
+  </router-view>
 </template>
 
 <script>
@@ -11,18 +14,17 @@
 // import announcementsMainPage from './components/Anouncements/announcementsMainPage.vue';
 // import databasePage from './components/ArchiveDB/databasePage.vue'
 // import profilePage from './components/ProfilePage/profilePage.vue'
-import openPositionsPage from './components/OpenPositionsPage/positionsPageMain.vue'
+// import openPositionsPage from './components/OpenPositionsPage/positionsPageMain.vue'
 export default {
-  name: 'App',
+  name: "App",
   components: {
     // mainpage,
     // announcementsMainPage,
     // databasePage,
     // profilePage,
-    openPositionsPage
-  }
-}
+    // openPositionsPage
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>
