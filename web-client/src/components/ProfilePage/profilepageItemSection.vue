@@ -80,22 +80,5 @@ export default {
   line-height: 27px;
   color: #000000;
 }
-span {
-  /* Anouncements & News */
 
-  width: 400px;
-  height: 33px;
-  left: 31px;
-  top: 33px;
-
-  font-family: Manjari;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 33px;
-
-  /* identical to box height */
-
-  color: #000000;
-}
 </style>
