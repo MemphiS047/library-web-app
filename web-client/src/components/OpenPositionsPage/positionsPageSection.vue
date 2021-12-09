@@ -9,18 +9,18 @@
           <div class="row">
             <div class="qualificationsDiv">
               <h5>Qualifications</h5>
-              <hr>
+              <hr />
               <ul class="list-group">
-                <li class="list-group-item border-0">Profile: Student</li>
+                <li class="list-group-item border-0">At least 5 years of experience as a librarian</li>
                 <li class="list-group-item border-0">
-                  Student Number: 64170013
+                  Having a History Degree or Studying History (Optional)
                 </li>
-                <li class="list-group-item border-0">Name: Yigit</li>
+                <li class="list-group-item border-0">Foreign Language : French and Latin Preferred</li>
                 <li class="list-group-item border-0">
-                  Username: yigithakverdi
+                  Good social and communication skills
                 </li>
                 <li class="list-group-item border-0">
-                  Email: yigit.hakverdi@std.medipol.edu.tr
+                  Excelent leadership
                 </li>
               </ul>
             </div>
@@ -31,10 +31,16 @@
             <button id="retrunButton">Return</button>
           </div> -->
           <div class="row">
-            <span class="openPositionTitle">Library Manager</span>
+            <div class="d-flex justify-content-end">
+              <span class="openPositionLocationTitle">North Campus</span>
+            </div>
           </div>
-          <div class="row">
-            row 4
+          <div class="row openPositionButtonCol">
+            <div
+              class="d-flex flex-column-reverse align-items-end bd-hghlight openPositionButtonSection"
+            >
+              <button id="applyButton">Apply</button>
+            </div>
           </div>
         </div>
       </div>
@@ -49,13 +55,37 @@ export default {
 </script>
 
 <style>
+.openPositionButtonCol{
+  height: 200px;
+}
+.openPositionButtonSection{
+  height: 100%;
+}
+#applyButton {
+  width: 107px;
+  height: 50px;
+  background-color: #0d1e63 !important;
+  color: #ffff;
+  font-size: 20px;
+  font-weight: normal;
+
+  background: #ffff;
+  border: 1px solid #0d1e63;
+  box-sizing: border-box;
+  border-radius: 15px;
+  border-style: solid;
+}
+
+.openPositionLocationTitle {
+  width: 200px;
+}
 h5 {
   font-weight: 400;
   padding: 0px !important;
 }
-.qualificationsDiv{
-    margin-top: 40px;
-    padding: 0px;
+.qualificationsDiv {
+  margin-top: 35px !important;
+  padding: 0px;
 }
 .qualificationsSpan {
   padding: 0px;
@@ -63,7 +93,7 @@ h5 {
 .list-group-item {
   background-color: transparent !important;
   font-family: "Manjari";
-  padding: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px !important;
 }
 .resourceSectionFlex {
   margin-top: 5px;

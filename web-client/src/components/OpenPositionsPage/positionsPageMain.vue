@@ -14,6 +14,9 @@
           <div class="row">
             <positionsPageSectionVue />
           </div>
+          <div class="row">
+            <positionsPageSectionVue />
+          </div>
         </div>
         <div class="col-3"></div>
       </div>
@@ -56,5 +59,4 @@ span {
 .profilePageCol {
   width: 100% !important;
 }
-
 </style>
