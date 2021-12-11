@@ -15,7 +15,7 @@
     </div>
     <div class="p-2 bd-highlight">
       <button
-        id="searchButton"
+        id="searchButtonMainPage"
         class="btn btn-primary"
         @click="formSubmitButton"
       >
@@ -73,7 +73,7 @@ form input
 #searchInputflex {
   width: 750px !important;
 }
-#searchButton {
+#searchButtonMainPage {
   margin-top: 40px;
   width: 107px;
   height: 50px;
@@ -84,7 +84,6 @@ form input
   border: 1px solid #0d1e63;
   box-sizing: border-box;
   border-radius: 10px;
-
   font-family: Manjari;
   font-style: normal;
   font-weight: normal;

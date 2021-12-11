@@ -3,7 +3,7 @@
     <span class="searchSectionDBTitle">Medipol Library Database</span>
     <div class="d-flex flex-row searchSectionDBFlex">
         <input class="databaseSearchingInput" type="text" placeholder="Enter what you want to search">
-        <button id="searchButton">Search</button>
+        <button id="searchButtonDatabasePage">Search</button>
     </div>
     <a class="advancedSearchLink">Advanced Search</a>
   </div>
@@ -20,7 +20,7 @@ export default {
 .searchSectionDBFlex{
     height: 70px;
 }
-#searchButton{
+#searchButtonDatabasePage{
     position: absolute;
     width: 107px;
     height: 50px;
