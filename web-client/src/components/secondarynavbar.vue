@@ -4,16 +4,22 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
         <li class="nav-item">
+          <router-link to="/home">
+            <a class="nav-link" href="#"> Home </a>
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/database"
+            ><a class="nav-link"> Book Database </a></router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link to="/announcements">
+            <a class="nav-link"> Announcement </a>
+          </router-link>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#"> Reservation </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"> Book Database </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"> Announcement </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"> News </a>
         </li>
       </ul>
     </div>
@@ -35,10 +41,9 @@ a {
   color: white !important;
 }
 
-#secondaryNavbar{
+#secondaryNavbar {
   width: 100% !important;
   position: absolute;
   z-index: 2;
 }
-
 </style>

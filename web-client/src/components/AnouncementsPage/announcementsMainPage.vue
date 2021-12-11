@@ -1,41 +1,27 @@
 <template>
   <div>
-    <navbar />
-    <secondarynavbar />
-    <div class="container">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-10">
-          <div class="announcementsTitleDiv">
-            <span>Announcements & News</span>
-          </div>
-          <div id="announcementsID" class="container">
-            <div class="row announcementsRow">
-              <announcementsSection />
-            </div>
-            <div class="row announcementsRow">
-              <announcementsSection />
-            </div>
-            <div class="row announcementsRow">
-              <announcementsSection />
-            </div>
-          </div>
-        </div>
-        <div class="col-3"></div>
+    <div class="announcementsTitleDiv">
+      <span>Announcements & News</span>
+    </div>
+    <div id="announcementsID" class="container">
+      <div class="row announcementsRow">
+        <announcementsSection />
+      </div>
+      <div class="row announcementsRow">
+        <announcementsSection />
+      </div>
+      <div class="row announcementsRow">
+        <announcementsSection />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import navbar from "./../navbar.vue";
-import secondarynavbar from "./../secondarynavbar.vue";
-import announcementsSection from "./../announcementsSection.vue";
+import announcementsSection from "./../MainPage/announcementsSection.vue";
 export default {
   name: "announcementsMainPage",
   components: {
-    navbar,
-    secondarynavbar,
     announcementsSection,
   },
 };
