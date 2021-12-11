@@ -1,23 +1,19 @@
-import Vue from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap"
+import { createRouter, createWebHistory } from "vue-router";
 
-// Bootstrap imports
-import {BootstrapVue, IconsPlugin } from 'bootstrap-vue/dist/bootstrap-vue.esm';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import mainpage from './components/MainPage/mainpage.vue';
 
-// Routing
-// import {createRouter, createWebHistory} from 'vue-router'
-// const router = createRouter({
-//   history : createWebHistory,
-//   routes : []
-// }); 
-// Vue.use(router);
+const router = createRouter({
+    history: createWebHistory(),
+    routes: [
+        { path: '/home', component: mainpage }
+    ],
+});
 
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+const app = createApp(App);
+app.use(router);
+app.config.productionTip = false;
+app.mount("#app");

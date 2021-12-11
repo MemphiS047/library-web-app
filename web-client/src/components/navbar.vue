@@ -27,12 +27,12 @@
             <a class="nav-link" href="#">Sign In</a>
           </li>
         </ul>
-        <b-button id="loginButton" v-b-modal.modal-center>Login</b-button>
+        <button id="loginButton" >Login</button>
       </div>
     </nav>
 
     <!-- MODAL COMPONENT -->
-    <div class="modalDiv">
+    <!-- <div class="modalDiv">
       <b-modal
         id="modal-center"
         centered
@@ -69,7 +69,7 @@
           </button>
         </form>
       </b-modal>
-    </div>
+    </div> -->
   </div>
 </template>
 

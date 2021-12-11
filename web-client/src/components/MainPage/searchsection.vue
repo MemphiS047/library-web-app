@@ -8,7 +8,7 @@
         <div class="container">
           <div class="row">
             <div class="col">
-              <img class="infoIcon" src="./../assets/info.svg" />
+              <img class="infoIcon" src="./../../assets/info.svg" />
             </div>
             <div class="col">
               <p>
