@@ -1,8 +1,14 @@
+import { createRouter, createWebHistory } from "vue-router";
 import { createApp } from "vue";
+
+
+
 import App from "./App.vue";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
-import { createRouter, createWebHistory } from "vue-router";
+
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 
 import mainPage from './components/MainPage/mainpage.vue';
 import databasePage from './components/DatabasePage/databasePage.vue';
@@ -19,5 +25,6 @@ const router = createRouter({
 
 const app = createApp(App);
 app.use(router);
+app.use(VueAxios, axios);
 app.config.productionTip = false;
 app.mount("#app");
