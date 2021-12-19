@@ -1,6 +1,6 @@
 <template>
   <div class="announcemenetsDiv">
-    <span class="announcementTitle">A Guide on How to Use Library Books</span>
+    <span class="announcementTitle">{announcementTitle}</span>
     <div class="d-flex flex-row announcementSummaryFlex">
       <p class="announcementSummary">
         {briefContent}
@@ -14,7 +14,8 @@
 export default {
   name: "announcementsSection",
   props: {
-
+    brieftContent: String,
+    announcementTitle: String
   }
 };
 </script>
