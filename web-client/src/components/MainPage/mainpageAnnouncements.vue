@@ -25,6 +25,9 @@ export default {
   components: {
     announcementsSection,
   },
+  props: {
+    
+  }
 };
 </script>
 
