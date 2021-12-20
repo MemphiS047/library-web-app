@@ -4,10 +4,10 @@
       <div class="row">
         <div class="col">
           <div class="row">
-            <span class="resourceTitle">Machine Learning : The New AI</span>
+            <span class="resourceTitle">{{bookName}}</span>
           </div>
           <div class="row">
-            <span class="resourceAuthor">Ethem Alpaydin</span>
+            <span class="resourceAuthor">{{authorName}}</span>
           </div>
         </div>
         <div class="col">
@@ -22,7 +22,10 @@
 
 <script>
 export default {
-  name: "announcementsSection",
+  name: "resourceSection",
+  props : [
+    'id', 'bookName', 'authorName'
+  ]
 };
 </script>
 

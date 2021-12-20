@@ -27,7 +27,12 @@
         </div>
       </div>
       <div class="row announcementsRow">
-        <resourceSection />
+        <resourceSection
+          v-for="result in queryResult"
+          :key="result.id"
+          :bookName="result.bookName"
+          :authorName="result.authorName"
+        />
       </div>
     </div>
   </div>
@@ -49,7 +54,6 @@ export default {
   },
   methods: {
     submitForm() {
-      console.log(this.searchString);
       this.getResults();
     },
     getResults() {
@@ -57,16 +61,18 @@ export default {
         .get("http://192.168.0.24:5000/api/getbook", {
           params: { search_string: this.searchString },
         })
-        .then(
-          (response) => (
-            console.log(response.data),
-            console.log("Search string var in axios: " + this.searchString)
-          )
-        )
-        .catch((error) => {
-          this.errors.push(error);
+        .then((response) => {
+          const result = JSON.parse(JSON.stringify(response.data));
+          console.log(result["queryLst"][0].book_name);
+          result["queryLst"].forEach((element) => {
+            this.queryResult.push({
+              bookId: element.book_id,
+              bookName: element.book_name,
+              authorName: element.author
+            });
+          });
         });
-    }
+    },
   },
 };
 </script>
