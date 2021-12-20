@@ -26,4 +26,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.col-10{
+  width: 100% !important;
+}
+</style>

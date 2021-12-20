@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import announcementsSection from "./announcementsSection.vue";
+import announcementsSection from "./../announcementsSection.vue";
 
 export default {
   name: "mainpageAnnouncements",

@@ -13,13 +13,14 @@ import VueAxios from 'vue-axios';
 import mainPage from './components/MainPage/mainpage.vue';
 import databasePage from './components/DatabasePage/databasePage.vue';
 import announcementsPage from './components/AnouncementsPage/announcementsMainPage.vue';
-
+import openPositionPage from './components/OpenPositionsPage/positionsPageMain.vue';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/home', component: mainPage },
+        { path: '/', component: mainPage },
         { path: '/database', component: databasePage },
-        { path: '/announcements', component: announcementsPage }
+        { path: '/announcements', component: announcementsPage },
+        { path: '/openpositions', component: openPositionPage }
     ],
 });
 

@@ -63,7 +63,7 @@ export default {
         })
         .then((response) => {
           const result = JSON.parse(JSON.stringify(response.data));
-          console.log(result["queryLst"][0].book_name);
+          // console.log(result["queryLst"][0]);
           result["queryLst"].forEach((element) => {
             this.queryResult.push({
               bookId: element.book_id,

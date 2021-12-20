@@ -7,18 +7,12 @@
       <div class="row announcementsRow">
         <announcementsSection />
       </div>
-      <div class="row announcementsRow">
-        <announcementsSection />
-      </div>
-      <div class="row announcementsRow">
-        <announcementsSection />
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-import announcementsSection from "./../MainPage/announcementsSection.vue";
+import announcementsSection from "./../announcementsSection.vue";
 export default {
   name: "announcementsMainPage",
   components: {

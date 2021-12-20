@@ -1,39 +1,45 @@
 <template>
   <div>
-    <navbar />
-    <secondarynavbar />
-
-    <!-- OPEN POSITIONS LIST -->
-    <div class="container">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-10 profilePageCol">
-          <div class="profilePageTitles">
-            <span>Open Positions</span>
-          </div>
-          <div class="row">
-            <positionsPageSectionVue />
-          </div>
-          <div class="row">
-            <positionsPageSectionVue />
-          </div>
-        </div>
-        <div class="col-3"></div>
-      </div>
+    <div class="profilePageTitles">
+      <span>Open Positions</span>
     </div>
+    <positionsPageSectionVue 
+    v-for="result in queryResult"
+    :key="result.jobId"
+    :jobTitle="result.jobTitle"
+    :jobDescription="result.jobDescription"
+    :payment="result.payment"
+    :jobType="result.jobType"/>
   </div>
 </template>
 
 <script>
-import navbar from "./../navbar.vue";
-import secondarynavbar from "./../secondarynavbar.vue";
 import positionsPageSectionVue from "./positionsPageSection.vue";
+import axios from "axios";
 export default {
   name: "positionsPage",
   components: {
-    navbar,
-    secondarynavbar,
     positionsPageSectionVue,
+  },
+  data() {
+    return {
+      queryResult: [],
+    };
+  },
+  mounted: function () {
+    axios.get("http://192.168.0.24:5000/api/getposition").then((response) => {
+      const result = JSON.parse(JSON.stringify(response.data));
+      // console.log(result["queryLst"][0]);
+      result["queryLst"].forEach((element) => {
+        this.queryResult.push({
+          jobId: element.job_id,
+          jobTitle: element.job_title,
+          jobDescription: element.Job_description,
+          payment: element.payment,
+          jobType: element.jobType
+        });
+      });
+    });
   },
 };
 </script>

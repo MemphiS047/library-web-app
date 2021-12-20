@@ -4,24 +4,14 @@
       <div class="row">
         <div class="col">
           <div class="row">
-            <span class="openPositionTitle">Library Manager</span>
+            <span class="openPositionTitle">{{jobTitle}}</span>
           </div>
           <div class="row">
             <div class="qualificationsDiv">
-              <h5>Qualifications</h5>
+              <h5>Job Description</h5>
               <hr />
               <ul class="list-group">
-                <li class="list-group-item border-0">At least 5 years of experience as a librarian</li>
-                <li class="list-group-item border-0">
-                  Having a History Degree or Studying History (Optional)
-                </li>
-                <li class="list-group-item border-0">Foreign Language : French and Latin Preferred</li>
-                <li class="list-group-item border-0">
-                  Good social and communication skills
-                </li>
-                <li class="list-group-item border-0">
-                  Excelent leadership
-                </li>
+                <li class="list-group-item border-0">{{jobDescription}}</li>
               </ul>
             </div>
           </div>
@@ -51,6 +41,9 @@
 <script>
 export default {
   name: "profilepageItemSection",
+  props: [
+    'jobId', 'jobTitle', 'payment', 'jobDescription'
+  ]
 };
 </script>
 
