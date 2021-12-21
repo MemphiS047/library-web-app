@@ -1,5 +1,4 @@
 <template>
-  <!-- NAVBAR COMPONENT -->
   <nav id="secondaryNavbar" class="navbar navbar-expand-lg navbar-custom">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
@@ -24,7 +23,9 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"> Reservation </a>
+          <router-link to="/reservations">
+            <a class="nav-link" href="#"> Reservation </a>
+          </router-link>
         </li>
       </ul>
     </div>

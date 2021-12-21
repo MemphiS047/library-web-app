@@ -105,18 +105,6 @@ export default {
 </script>
 
 <style>
-span {
-  width: 400px;
-  height: 33px;
-  left: 31px;
-  top: 33px;
-  font-family: Manjari;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 33px;
-  color: #000000;
-}
 .list-group {
   margin-top: 120px;
 }

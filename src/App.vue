@@ -21,13 +21,25 @@ export default {
   name: "App",
   components: {
     navbar,
-    secondarynavbar
+    secondarynavbar,
   },
 };
 </script>
 
 <style>
-.col-10{
+.col-10 {
   width: 100% !important;
+}
+span {
+  width: 400px;
+  height: 33px;
+  left: 31px;
+  top: 33px;
+  font-family: Manjari;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 33px;
+  color: #000000;
 }
 </style>

@@ -86,18 +86,6 @@ export default {
   left: 97px;
   top: 178px;
 }
-span {
-  width: 400px;
-  height: 33px;
-  left: 31px;
-  top: 33px;
-  font-family: Manjari;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 33px;
-  color: #000000;
-}
 .announcementsRow {
   padding: 15px;
 }
