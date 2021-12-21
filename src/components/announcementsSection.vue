@@ -1,9 +1,9 @@
 <template>
   <div class="announcemenetsDiv">
-    <span class="announcementTitle">{{announcementsTitle}}</span>
+    <span class="announcementTitle">{{ announcementTitle }}</span>
     <div class="d-flex flex-row announcementSummaryFlex">
       <p class="announcementSummary">
-        {{briefContent}}
+        {{ message }}
       </p>
     </div>
     <a class="readMoreLink">Read More...</a>
@@ -13,9 +13,7 @@
 <script>
 export default {
   name: "announcementsSection",
-  props: [
-    'briefContent', 'announcementTitle'
-  ]
+  props: ["announcementTitle", "message"],
 };
 </script>
 

@@ -5,7 +5,11 @@
     </div>
     <div id="announcementsID" class="container">
       <div class="row announcementsRow">
-        <announcementsSection />
+        <announcementsSection 
+        v-for="result in queryResult"
+        :key="result.announcementID"
+        :announcementTitle="result.announcementTitle"
+        :message="result.message"/>
       </div>
     </div>
   </div>
@@ -13,10 +17,29 @@
 
 <script>
 import announcementsSection from "./../announcementsSection.vue";
+import axios from 'axios';
 export default {
   name: "announcementsMainPage",
   components: {
     announcementsSection,
+  },
+  data() {
+    return {
+      queryResult: [],
+    };
+  },
+  mounted: function () {
+    axios.get("http://192.168.0.24:5000/api/manageannouncements").then((response) => {
+      const result = JSON.parse(JSON.stringify(response.data));
+      console.log(result["queryLst"][0]);
+      result["queryLst"].forEach((element) => {
+        this.queryResult.push({
+          announcementID: element.announce_id,
+          announcementTitle: element.announcement_title,
+          message: element.message
+        });
+      });
+    });
   },
 };
 </script>

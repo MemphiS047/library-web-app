@@ -58,7 +58,7 @@ export default {
     },
     getResults() {
       axios
-        .get("http://192.168.0.24:5000/api/getbook", {
+        .get("http://192.168.0.24:5000/api/managebooks", {
           params: { search_string: this.searchString },
         })
         .then((response) => {

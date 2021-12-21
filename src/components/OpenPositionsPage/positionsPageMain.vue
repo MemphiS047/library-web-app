@@ -27,7 +27,7 @@ export default {
     };
   },
   mounted: function () {
-    axios.get("http://192.168.0.24:5000/api/getposition").then((response) => {
+    axios.get("http://192.168.0.24:5000/api/managepositions").then((response) => {
       const result = JSON.parse(JSON.stringify(response.data));
       // console.log(result["queryLst"][0]);
       result["queryLst"].forEach((element) => {
