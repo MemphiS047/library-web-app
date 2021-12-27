@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { createApp } from "vue";
-
+import { createStore } from "vuex";
 import App from "./App.vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
@@ -30,7 +30,25 @@ const router = createRouter({
     ],
 });
 
+const store = createStore({
+    state: () => ({
+        username: "",
+        password: "",
+        firstname: "",
+        lastname: "",
+    }),
+
+    actions: {
+
+    },
+
+    mutations: {},
+
+    getters: {},
+});
+
 const app = createApp(App);
+app.use(store);
 app.use(router);
 app.use(VCalendar, {});
 app.use(VueAxios, axios);

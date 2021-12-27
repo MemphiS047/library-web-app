@@ -48,6 +48,7 @@ export default {
   name: "loginpage",
   data() {
     return {
+      api_response: null,
       user: {
         username: "",
         password: "",
@@ -93,7 +94,9 @@ export default {
         .then((res) => {
           console.log(res.data["message"]);
           if (res.data["message"] === "Authentication successful") {
+            this.api_response = res.data;
             this.is_authenticated = true;
+            this.createStorage();
             this.$router.push(this.$route.query.redirect || "/");
           } else {
             this.err_messages["err_invalid_credentials"] = res.data["message"];
@@ -104,6 +107,11 @@ export default {
           console.log(error);
         });
     },
+
+    // createStorage() {
+    //   console.log(this.api_response["credentials"].username)
+    //   var storage = new Storage();
+    // },
   },
 };
 </script>
