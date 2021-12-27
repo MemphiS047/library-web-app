@@ -24,12 +24,12 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link to="/login">
-              <a class="nav-link" href="#">Sign In</a>
+            <router-link to="/signup">
+              <a class="nav-link" href="#">Sign Up</a>
             </router-link>
           </li>
         </ul>
-        <router-link to="/signup">
+        <router-link to="/login">
           <button id="loginButton">Login</button>
         </router-link>
       </div>

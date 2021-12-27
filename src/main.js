@@ -14,8 +14,8 @@ import databasePage from "./components/DatabasePage/databasePage.vue";
 import announcementsPage from "./components/AnouncementsPage/announcementsMainPage.vue";
 import openPositionPage from "./components/OpenPositionsPage/positionsPageMain.vue";
 import reservationMainPage from "./components/ReservationPage/reservationMainPage.vue";
-import loginPage from "./components/Authentication/loginPage.vue";
-import signupPage from "./components/Authentication/signupPage.vue";
+import loginPage from "./components/AuthenticationPage/loginPage.vue";
+import signupPage from "./components/AuthenticationPage/signupPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -25,8 +25,8 @@ const router = createRouter({
         { path: "/announcements", component: announcementsPage },
         { path: "/openpositions", component: openPositionPage },
         { path: "/reservations", component: reservationMainPage },
-        { path: "/signup", component: loginPage },
-        { path: "/login", component: signupPage },
+        { path: "/login", component: loginPage },
+        { path: "/signup", component: signupPage },
     ],
 });
 
