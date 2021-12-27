@@ -54,6 +54,7 @@ export default {
   },
   methods: {
     submitForm() {
+      this.queryResult = [];
       this.getResults();
     },
     getResults() {

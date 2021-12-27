@@ -24,10 +24,14 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Sign In</a>
+            <router-link to="/login">
+              <a class="nav-link" href="#">Sign In</a>
+            </router-link>
           </li>
         </ul>
-        <button id="loginButton" >Login</button>
+        <router-link to="/signup">
+          <button id="loginButton">Login</button>
+        </router-link>
       </div>
     </nav>
 
@@ -82,7 +86,7 @@ export default {
     };
   },
   methods: {
-    toggle: function() {
+    toggle: function () {
       console.log(!this.loginButtonPressed);
       if (this.loginButtonPressed) {
         this.loginButtonPressed = false;
@@ -150,7 +154,7 @@ li {
 .form-group {
   padding: 20px 0px 20px 0px;
 }
-.modalDiv{
+.modalDiv {
   width: 100%;
   height: 100%;
 }
