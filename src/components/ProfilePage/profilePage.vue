@@ -1,7 +1,5 @@
 <template>
   <div>
-    <navbar />
-    <secondarynavbar />
     <!-- PROFILE PAGE BANNER -->
     <div class="container">
       <div class="row">
@@ -25,12 +23,6 @@
           <div class="row">
             <profilePageItemSection />
           </div>
-          <div class="row">
-            <profilePageItemSection />
-          </div>
-          <div class="row">
-            <profilePageItemSection />
-          </div>
         </div>
         <div class="col-3"></div>
       </div>
@@ -44,12 +36,6 @@
           <div class="profilePageTitles">
             <span>Reservations</span>
             <hr>
-          </div>
-          <div class="row">
-            <profilePageReservationSection />
-          </div>
-          <div class="row">
-            <profilePageReservationSection />
           </div>
           <div class="row">
             <profilePageReservationSection />
@@ -71,12 +57,6 @@
           <div class="row">
             <profilePageFavoriteSectionVue />
           </div>
-          <div class="row">
-            <profilePageFavoriteSectionVue />
-          </div>
-          <div class="row">
-            <profilePageFavoriteSectionVue />
-          </div>
         </div>
         <div class="col-3"></div>
       </div>
@@ -85,8 +65,6 @@
 </template>
 
 <script>
-import navbar from "./../navbar.vue";
-import secondarynavbar from "./../secondarynavbar.vue";
 import profilePageBanner from "./profilepageBanner.vue";
 import profilePageItemSection from "./profilepageItemSection.vue";
 import profilePageReservationSection from "./profilePageReservationSection.vue";
@@ -94,8 +72,6 @@ import profilePageFavoriteSectionVue from "./profilePageFavoriteSection.vue";
 export default {
   name: "profilePage",
   components: {
-    navbar,
-    secondarynavbar,
     profilePageBanner,
     profilePageItemSection,
     profilePageReservationSection,

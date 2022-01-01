@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { createApp } from "vue";
-import { createStore } from "vuex";
+import store from './store';
+// import { createStore } from "vuex";
+
 import App from "./App.vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
@@ -16,6 +18,7 @@ import openPositionPage from "./components/OpenPositionsPage/positionsPageMain.v
 import reservationMainPage from "./components/ReservationPage/reservationMainPage.vue";
 import loginPage from "./components/AuthenticationPage/loginPage.vue";
 import signupPage from "./components/AuthenticationPage/signupPage.vue";
+import profilePage from "./components/ProfilePage/profilePage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -27,25 +30,10 @@ const router = createRouter({
         { path: "/reservations", component: reservationMainPage },
         { path: "/login", component: loginPage },
         { path: "/signup", component: signupPage },
+        { path: "/profile", component: profilePage }
     ],
 });
 
-const store = createStore({
-    state: () => ({
-        username: "",
-        password: "",
-        firstname: "",
-        lastname: "",
-    }),
-
-    actions: {
-
-    },
-
-    mutations: {},
-
-    getters: {},
-});
 
 const app = createApp(App);
 app.use(store);

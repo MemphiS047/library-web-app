@@ -92,26 +92,22 @@ export default {
           password: this.user.password,
         })
         .then((res) => {
-          console.log(res.data["message"]);
           if (res.data["message"] === "Authentication successful") {
             this.api_response = res.data;
             this.is_authenticated = true;
-            this.createStorage();
             this.$router.push(this.$route.query.redirect || "/");
+            this.$store.state.username = res.data["credentials"]["username"];
+            this.$store.state.firstname = res.data["credentials"]["firstname"];
+            this.$store.state.lastname = res.data["credentials"]["lastname"];
+            this.$store.commit('login')
           } else {
             this.err_messages["err_invalid_credentials"] = res.data["message"];
-            this.is_authenticated = false;
           }
         })
         .catch((error) => {
           console.log(error);
         });
     },
-
-    // createStorage() {
-    //   console.log(this.api_response["credentials"].username)
-    //   var storage = new Storage();
-    // },
   },
 };
 </script>

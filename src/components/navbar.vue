@@ -22,16 +22,41 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <router-link to="/signup">
-              <a class="nav-link" href="#">Sign Up</a>
-            </router-link>
-          </li>
-        </ul>
-        <router-link to="/login">
-          <button id="loginButton">Login</button>
-        </router-link>
+        <div
+          class="d-flex justify-content-end navbarFlex"
+          v-if="!$store.state.is_authenticated"
+        >
+          <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <router-link to="/signup">
+                <a class="nav-link" href="#">Sign Up</a>
+              </router-link>
+            </li>
+          </ul>
+          <router-link to="/login">
+            <button id="loginButton">Login</button>
+          </router-link>
+        </div>
+        <div
+          class="d-flex justify-content-end navbarFlex"
+          v-if="$store.state.is_authenticated"
+        >
+          <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <router-link to="/profile">
+                <label class="profileFirstName"
+                  >{{ $store.state.firstname }}
+                </label>
+                <label class="profileLastName">
+                  {{ $store.state.lastname }}
+                </label>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <img src="./../assets/exit.svg" class="logoutIcon" @click="logout"/>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -86,6 +111,10 @@ export default {
     };
   },
   methods: {
+    logout() {
+        this.$store.commit('logout');
+    },
+
     toggle: function () {
       console.log(!this.loginButtonPressed);
       if (this.loginButtonPressed) {
@@ -93,6 +122,7 @@ export default {
       } else {
         this.loginButtonPressed = true;
       }
+
       return this.loginButtonPressed;
     },
   },
@@ -100,6 +130,17 @@ export default {
 </script>
 
 <style>
+.profileFirstName{
+  padding: 10px;
+}
+.logoutIcon {
+  width: 25px;
+  height: 25px;
+}
+.navbarFlex {
+  width: 100% !important;
+}
+
 @font-face {
   font-family: "Manjari";
   src: local("Manjari"), url(./../assets/Manjari-Bold.ttf) format("truetype");

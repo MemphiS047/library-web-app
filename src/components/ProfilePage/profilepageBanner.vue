@@ -4,12 +4,9 @@
       <span class="profilePageSectionTitle">My Profile</span>
       <ul class="list-group">
         <li class="list-group-item border-0">Profile: Student</li>
-        <li class="list-group-item border-0">Student Number: 64170013</li>
-        <li class="list-group-item border-0">Name: Yigit</li>
-        <li class="list-group-item border-0">Username: yigithakverdi</li>
-        <li class="list-group-item border-0">
-          Email: yigit.hakverdi@std.medipol.edu.tr
-        </li>
+        <li class="list-group-item border-0">First name: {{$store.state.firstname}}</li>
+        <li class="list-group-item border-0">Last name: {{$store.state.lastname}}</li>
+        <li class="list-group-item border-0">Username: {{$store.state.username}}</li>
       </ul>
     </div>
   </div>
