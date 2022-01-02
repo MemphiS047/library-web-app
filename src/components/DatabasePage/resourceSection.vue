@@ -12,7 +12,7 @@
         </div>
         <div class="col">
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
-            <button id="borrowButton">Borrow</button>
+            <button id="borrowButton" @click="borrow">Borrow</button>
           </div>
         </div>
       </div>
@@ -24,8 +24,13 @@
 export default {
   name: "resourceSection",
   props : [
-    'id', 'bookName', 'authorName'
-  ]
+    'bookId', 'bookName', 'authorName'
+  ],
+  methods : {
+    borrow(){
+      this.$props.bookId;
+    }
+  }
 };
 </script>
 

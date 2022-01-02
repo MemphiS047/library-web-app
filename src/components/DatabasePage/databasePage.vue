@@ -29,7 +29,8 @@
       <div class="row announcementsRow">
         <resourceSection
           v-for="result in queryResult"
-          :key="result.id"
+          :key="result.bookId"
+          :bookId="result.bookId"
           :bookName="result.bookName"
           :authorName="result.authorName"
         />
@@ -63,15 +64,7 @@ export default {
           params: { search_string: this.searchString },
         })
         .then((response) => {
-          const result = JSON.parse(JSON.stringify(response.data));
-          // console.log(result["queryLst"][0]);
-          result["queryLst"].forEach((element) => {
-            this.queryResult.push({
-              bookId: element.book_id,
-              bookName: element.book_name,
-              authorName: element.author
-            });
-          });
+          this.queryResult = response.data["queryLst"];
         });
     },
   },
