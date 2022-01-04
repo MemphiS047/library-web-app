@@ -4,10 +4,10 @@
       <div class="row">
         <div class="col">
           <div class="row">
-            <span class="resourceTitle">{{bookName}}</span>
+            <span class="resourceTitle">{{ bookName }}</span>
           </div>
           <div class="row">
-            <span class="resourceAuthor">{{authorName}}</span>
+            <span class="resourceAuthor">{{ authorName }}</span>
           </div>
         </div>
         <div class="col">
@@ -21,16 +21,42 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "resourceSection",
-  props : [
-    'bookId', 'bookName', 'authorName'
-  ],
-  methods : {
-    borrow(){
-      this.$props.bookId;
-    }
-  }
+  props: ["bookId", "bookName", "authorName"],
+  data() {
+    return {
+      borrow_req: {
+        reservation_id: 5,
+        book_id: this.$props.bookId,
+        reserv_datetime: "2020-10-10",
+        duration: 20,
+        user_id: this.$store.state.userid,
+        is_returned: 0,
+      },
+    };
+  },
+  methods: {
+    borrow() {
+      console.log(this.borrow_req);
+      axios
+        .post("http://192.168.0.24:5000/api/borrow", {
+          reservation_id: this.borrow_req.reservation_id,
+          book_id: this.borrow_req.book_id,
+          reserv_datetime: this.borrow_req.reserv_datetime,
+          duration: this.borrow_req.duration,
+          user_id: this.borrow_req.user_id,
+          is_returned: this.borrow_req.is_returned,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
 };
 </script>
 

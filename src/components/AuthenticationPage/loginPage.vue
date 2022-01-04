@@ -92,14 +92,16 @@ export default {
           password: this.user.password,
         })
         .then((res) => {
+          console.log(res.data["credentials"]);
           if (res.data["message"] === "Authentication successful") {
             this.api_response = res.data;
             this.is_authenticated = true;
             this.$router.push(this.$route.query.redirect || "/");
+            this.$store.state.userid = res.data["credentials"]["userid"];
             this.$store.state.username = res.data["credentials"]["username"];
             this.$store.state.firstname = res.data["credentials"]["firstname"];
             this.$store.state.lastname = res.data["credentials"]["lastname"];
-            this.$store.commit('login')
+            this.$store.commit('login');
           } else {
             this.err_messages["err_invalid_credentials"] = res.data["message"];
           }
