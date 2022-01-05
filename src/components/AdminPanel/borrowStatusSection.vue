@@ -4,15 +4,17 @@
       <div class="row">
         <div class="col">
           <div class="row">
-            <span class="resourceTitle">{{bookName}}</span>
+            <span class="resourceTitle">{{ bookName }}</span>
           </div>
           <div class="row">
-            <span class="resourceAuthor">{{firstName}}</span>
+            <span class="resourceAuthor"
+              >Borrowed Person : {{ firstName }}</span
+            >
           </div>
         </div>
         <div class="col">
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
-            <button id="retrunButton">Returned</button>
+            <button id="retrunButton" @click="return_book">Returned</button>
           </div>
         </div>
       </div>
@@ -20,8 +22,8 @@
   </div>
 </template>
 
-
 <script>
+import axios from "axios";
 export default {
   name: "adminAddBook",
   props: [
@@ -31,12 +33,24 @@ export default {
     "userId",
     "isReturned",
     "firstName",
-    "bookName"
+    "bookName",
+    "reservationId"
   ],
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    return_book() {
+      // book_id = this.$props.bookId
+      axios
+        .delete("http://192.168.0.24:5000/api/borrow", {
+          data: { reservation_id: this.$props.reservationId, book_id: this.$props.bookId },
+        })
+        .then((res) => {
+          console.log(res["message"]);
+        });
+    },
+  },
 };
 </script>
 
@@ -94,5 +108,4 @@ export default {
   line-height: 27px;
   color: #000000;
 }
-
 </style>

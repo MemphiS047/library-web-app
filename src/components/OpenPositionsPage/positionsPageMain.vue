@@ -32,9 +32,7 @@ export default {
   },
   mounted: function () {
     axios
-      .post("http://192.168.0.24:5000/api/managepositions", {
-        user_id: this.$store.state.userid
-      })
+      .get("http://192.168.0.24:5000/api/managepositions")
       .then((res) => {
         const result = JSON.parse(JSON.stringify(res.data));
         console.log(result["queryLst"][0]);

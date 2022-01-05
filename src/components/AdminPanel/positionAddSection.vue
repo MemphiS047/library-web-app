@@ -1,17 +1,51 @@
 <template>
   <div class="adminAddBookDiv">
-    <form @submit.prevent="submitForm" method="get" class="h-80">
-      <div class="container">
-        <div class="row">
+    <div class="container">
+      <div class="row">
+        <form @submit.prevent="submitForm" method="get" class="h-80">
           <div class="col">
             <div class="row">
-              <span class="openPositionTitle">Resource Status</span>
+              <span class="openPositionTitle">Add New Position</span>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+              <div class="qualificationsDiv">
+                <h5>Job Title</h5>
+                <input
+                  v-model="jobTitle"
+                  class="form-control adminPanelInput"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
             </div>
             <div class="row">
               <div class="qualificationsDiv">
-                <h5>Book ID or Name</h5>
+                <h5>Job Description</h5>
                 <input
-                  v-model="searchString"
+                  v-model="jobDescription"
+                  class="form-control adminPanelInput"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="qualificationsDiv">
+                <h5>Payment</h5>
+                <input
+                  v-model="payment"
+                  class="form-control adminPanelInput"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="qualificationsDiv">
+                <h5>Job Type</h5>
+                <input
+                  v-model="jobType"
                   class="form-control adminPanelInput"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
@@ -22,69 +56,49 @@
               <div
                 class="d-flex flex-column-reverse align-items-end bd-hghlight openPositionButtonSection"
               >
-                <button type="submit" id="applyButton" class="defaultBtn">
+                <button
+                  type="submit"
+                  id="applyButton"
+                  class="defaultBtn"
+                  @click="apply"
+                >
                   Submit
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
-    </form>
-    <borrowStatusSection
-      v-for="result in queryResult"
-      :key="result.reservationId"
-      :reservationId="result.reservationId"
-      :bookId="result.bookId"
-      :reservDatetime="result.reservDatetime"
-      :duration="result.duration"
-      :userId="result.userId"
-      :isReturned="result.isReturned"
-      :firstName="result.firstName"
-      :bookName="result.bookName"
-    />
+    </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import borrowStatusSection from "./borrowStatusSection.vue";
+import axios from 'axios';
 export default {
   name: "adminAddBook",
-  components: {
-    borrowStatusSection,
-  },
   data() {
     return {
-      bookSearchStatus: "",
-      searchString: "",
-      queryResult: []
+      jobTitle: "",
+      jobDescription: "",
+      payment: "",
+      jobType: ""
     };
   },
   methods: {
     submitForm() {
-      this.getBorrowStatus();
-    },
-    getBorrowStatus() {
       axios
-        .get("http://192.168.0.24:5000/api/borrow", {
-          params: { search_string: this.searchString },
+        .post("http://192.168.0.24:5000/api/managepositions", {
+          job_title: this.jobTitle,
+          Job_description: this.jobDescription,
+          payment: this.payment,
+          job_type: this.jobType
         })
-        .then((response) => {
-          const result = JSON.parse(JSON.stringify(response.data));
-          result["queryLst"].forEach((element) => {
-            this.queryResult.push({
-              bookId: element.book_id,
-              reservDatetime: element.reserv_datetime,
-              duration: element.duration,
-              userId: element.user_id,
-              isReturned: element.is_returned,
-              firstName: element.firstname,
-              bookName: element.bookname,
-              reservationId: element.reservation_id
-            });
-          });
-          console.log(this.queryResult);
+        .then((res) => {
+          console.log(res.data["message"]);
+        })
+        .catch((error) => {
+          console.log(error);
         });
     },
   },
