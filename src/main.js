@@ -19,6 +19,7 @@ import reservationMainPage from "./components/ReservationPage/reservationMainPag
 import loginPage from "./components/AuthenticationPage/loginPage.vue";
 import signupPage from "./components/AuthenticationPage/signupPage.vue";
 import profilePage from "./components/ProfilePage/profilePage.vue";
+import adminPage from "./components/AdminPanel/adminPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -30,7 +31,8 @@ const router = createRouter({
         { path: "/reservations", component: reservationMainPage },
         { path: "/login", component: loginPage },
         { path: "/signup", component: signupPage },
-        { path: "/profile", component: profilePage }
+        { path: "/profile", component: profilePage },
+        { path: "/admin", component: adminPage }
     ],
 });
 

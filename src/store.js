@@ -6,7 +6,8 @@ const store = createStore({
         firstname: "",
         lastname: "",
         is_authenticated: false,
-        userid: ""
+        userid: "",
+        is_admin: 0
     }),
 
     actions: {},
