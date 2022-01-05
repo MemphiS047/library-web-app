@@ -12,7 +12,7 @@
         </div>
         <div class="col">
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
-            <button id="borrowButton" @click="borrow">Borrow</button>
+            <button v-if="$store.state.is_authenticated" id="borrowButton" @click="borrow">Borrow</button>
           </div>
         </div>
       </div>
@@ -28,7 +28,6 @@ export default {
   data() {
     return {
       borrow_req: {
-        reservation_id: 5,
         book_id: this.$props.bookId,
         reserv_datetime: "2020-10-10",
         duration: 20,
@@ -42,7 +41,6 @@ export default {
       console.log(this.borrow_req);
       axios
         .post("http://192.168.0.24:5000/api/borrow", {
-          reservation_id: this.borrow_req.reservation_id,
           book_id: this.borrow_req.book_id,
           reserv_datetime: this.borrow_req.reserv_datetime,
           duration: this.borrow_req.duration,

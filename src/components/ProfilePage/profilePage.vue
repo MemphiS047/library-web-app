@@ -81,15 +81,15 @@ export default {
 </script>
 
 <style>
-.list-group {
+/* .list-group {
   margin-top: 120px;
-}
+} */
 
-.list-group-item {
+/* .list-group-item {
   background-color: transparent !important;
   font-family: "Manjari";
   padding: 10px 10px 10px 55px !important;
-}
+} */
 .profilePageSection {
   position: relative;
   width: 1317px;

@@ -2,11 +2,11 @@
   <div class="profilePageSection">
     <div class="profileBox">
       <span class="profilePageSectionTitle">My Profile</span>
-      <ul class="list-group">
-        <li class="list-group-item border-0">Profile: Student</li>
-        <li class="list-group-item border-0">First name: {{$store.state.firstname}}</li>
-        <li class="list-group-item border-0">Last name: {{$store.state.lastname}}</li>
-        <li class="list-group-item border-0">Username: {{$store.state.username}}</li>
+      <ul class="list-group profilePageListGroup">
+        <li class="list-group-item profilePageListItem border-0">Profile: Student</li>
+        <li class="list-group-item profilePageListItem border-0">First name: {{$store.state.firstname}}</li>
+        <li class="list-group-item profilePageListItem border-0">Last name: {{$store.state.lastname}}</li>
+        <li class="list-group-item profilePageListItem border-0">Username: {{$store.state.username}}</li>
       </ul>
     </div>
   </div>
@@ -19,11 +19,11 @@ export default {
 </script>
 
 <style>
-.list-group {
+.profilePageListGroup {
   margin-top: 120px;
 }
 
-.list-group-item {
+.profilePageListItem {
   background-color: transparent !important;
   font-family: "Manjari";
   padding: 10px 10px 10px 55px !important;

@@ -113,6 +113,7 @@ export default {
   methods: {
     logout() {
         this.$store.commit('logout');
+        window.location.reload();
     },
 
     toggle: function () {
