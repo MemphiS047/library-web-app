@@ -6,7 +6,7 @@
         {{ message }}
       </p>
     </div>
-    <a class="readMoreLink">Read More...</a>
+    <a @click="sendData()" class="readMoreLink">Read More...</a>
   </div>
 </template>
 
@@ -14,6 +14,23 @@
 export default {
   name: "announcementsSection",
   props: ["announcementTitle", "message"],
+  data(){
+    return{
+      prp:{
+        m : this.message,
+        h : this.announcementTitle,
+      }
+    }
+  },
+  
+  methods : {
+         sendData(){
+           this.$router.push({name :"fullpage", params:{data:this.prp.m}});
+           console.log(this.prp.m)
+         }
+
+  },
+
 };
 </script>
 
