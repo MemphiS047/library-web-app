@@ -4,16 +4,16 @@
       <div class="row">
         <div class="col">
           <div class="row">
-            <span class="resourceTitle">Machine Learning : The New AI</span>
+            <span class="resourceTitle">{{ bookName }}</span>
           </div>
           <div class="row">
-            <span class="resourceAuthor">Ethem Alpaydin</span>
+            <span class="resourceAuthor"> {{ author }} </span>
           </div>
         </div>
         <div class="col">
-          <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
+          <!-- <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
             <button id="retrunButton">Return</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -23,6 +23,17 @@
 <script>
 export default {
   name: "profilepageItemSection",
+  props: [
+    "bookId",
+    "reservDatetime",
+    "duration",
+    "userId",
+    "isReturned",
+    "firstName",
+    "bookName",
+    "reservationId",
+    "author"
+  ],
 };
 </script>
 
@@ -80,5 +91,4 @@ export default {
   line-height: 27px;
   color: #000000;
 }
-
 </style>

@@ -142,7 +142,7 @@ export default {
           faculty: this.user.faculty,
           department: this.user.department,
           username: this.user.username,
-          is_admin: "false",
+          is_admin: 0,
           password: this.user.password,
         })
         .then((res) => {

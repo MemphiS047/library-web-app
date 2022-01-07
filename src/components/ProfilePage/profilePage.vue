@@ -18,18 +18,30 @@
         <div class="col-10 profilePageCol">
           <div class="profilePageTitles">
             <span>Borrowed Items</span>
-            <hr>
+            <hr />
+            <!-- <label class="noBorrowWarning" v-if="is_borrowed">No borrowed books currently .... </label> -->
           </div>
           <div class="row">
-            <profilePageItemSection />
+            <profilePageItemSection
+              v-for="result in queryResult"
+              :key="result.reservationId"
+              :reservationId="result.reservationId"
+              :bookId="result.bookId"
+              :reservDatetime="result.reservDatetime"
+              :duration="result.duration"
+              :userId="result.userId"
+              :isReturned="result.isReturned"
+              :firstName="result.firstName"
+              :bookName="result.bookName"
+              :author="result.author"
+            />
           </div>
         </div>
         <div class="col-3"></div>
       </div>
     </div>
 
-    <!-- RESERVATIONS -->
-    <div class="container">
+    <!-- <div class="container">
       <div class="row">
         <div class="col-3"></div>
         <div class="col-10 profilePageCol">
@@ -45,7 +57,7 @@
       </div>
     </div>
 
-    <!-- FAVORITES -->
+    
     <div class="container">
       <div class="row">
         <div class="col-3"></div>
@@ -60,36 +72,65 @@
         </div>
         <div class="col-3"></div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import profilePageBanner from "./profilepageBanner.vue";
 import profilePageItemSection from "./profilepageItemSection.vue";
-import profilePageReservationSection from "./profilePageReservationSection.vue";
-import profilePageFavoriteSectionVue from "./profilePageFavoriteSection.vue";
+import axios from "axios";
+// import profilePageReservationSection from "./profilePageReservationSection.vue";
+// import profilePageFavoriteSectionVue from "./profilePageFavoriteSection.vue";
 export default {
   name: "profilePage",
   components: {
     profilePageBanner,
     profilePageItemSection,
-    profilePageReservationSection,
-    profilePageFavoriteSectionVue,
+    // profilePageReservationSection,
+    // profilePageFavoriteSectionVue,
+  },
+  data() {
+    return {
+      queryResult: [],
+      is_borrowed: false
+    };
+  },
+  mounted: function () {
+    axios
+      .get("http://192.168.0.24:5000/api/borrow", {
+        params: { search_string: this.$store.state.userid },
+      })
+      .then((response) => {
+        const result = JSON.parse(JSON.stringify(response.data));
+        result["queryLst"].forEach((element) => {
+          this.queryResult.push({
+            bookId: element.book_id,
+            reservDatetime: element.reserv_datetime,
+            duration: element.duration,
+            userId: element.user_id,
+            isReturned: element.is_returned,
+            firstName: element.firstname,
+            bookName: element.bookname,
+            reservationId: element.reservation_id,
+            author: element.author
+          });
+        });
+        console.log(this.queryResult["bookId"]);
+        if(this.queryResult["bookId"] == undefined) {
+          this.is_borrowed = true
+        }
+      });
   },
 };
 </script>
 
 <style>
-/* .list-group {
-  margin-top: 120px;
-} */
-
-/* .list-group-item {
-  background-color: transparent !important;
-  font-family: "Manjari";
-  padding: 10px 10px 10px 55px !important;
-} */
+.noBorrowWarning{
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
 .profilePageSection {
   position: relative;
   width: 1317px;
@@ -103,8 +144,8 @@ export default {
 .profilePageTitles {
   margin-top: 40px;
 }
-hr{
-  padding: 1px
+hr {
+  padding: 1px;
 }
 .profilePageSectionTitle {
   position: absolute;

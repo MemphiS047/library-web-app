@@ -1,7 +1,11 @@
 <template>
   <nav id="secondaryNavbar" class="navbar navbar-expand-lg navbar-custom">
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul id="secondaryNavbarItems" class="navbar-nav ml-auto">
+      <ul
+        v-if="$store.state.is_admin != 1"
+        id="secondaryNavbarItems"
+        class="navbar-nav ml-auto"
+      >
         <li class="nav-item">
           <router-link to="/">
             <a class="nav-link" href="#"> Home </a>
@@ -27,6 +31,11 @@
             <a class="nav-link" href="#"> Reservation </a>
           </router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/traffic">
+            <a class="nav-link" href="#"> Traffic </a>
+          </router-link>
+        </li>
       </ul>
     </div>
   </nav>
@@ -35,6 +44,9 @@
 <script>
 export default {
   name: "secondarynavbar",
+  mounted: function () {
+    console.log("ADMIN STATE" + this.$store.state.is_admin);
+  },
 };
 </script>
 

@@ -14,7 +14,7 @@
         </div>
         <div class="col">
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
-            <button id="retrunButton" @click="return_book">Returned</button>
+            <button id="retrunButton" :disabled="isActive" @click="return_book">Returned</button>
           </div>
         </div>
       </div>
@@ -37,7 +37,9 @@ export default {
     "reservationId"
   ],
   data() {
-    return {};
+    return {
+      isActive: false
+    };
   },
   methods: {
     return_book() {
@@ -48,6 +50,7 @@ export default {
         })
         .then((res) => {
           console.log(res["message"]);
+          this.isActive = true;
         });
     },
   },

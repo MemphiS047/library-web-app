@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { createApp } from "vue";
 import store from './store';
-// import { createStore } from "vuex";
 
 import App from "./App.vue";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,6 +19,8 @@ import loginPage from "./components/AuthenticationPage/loginPage.vue";
 import signupPage from "./components/AuthenticationPage/signupPage.vue";
 import profilePage from "./components/ProfilePage/profilePage.vue";
 import adminPage from "./components/AdminPanel/adminPage.vue";
+import trafficViewPage from "./components/TrafficViewPage/trafficViewPage.vue";
+import announcementFullPage from "./components/AnouncementsPage/announcementFullPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -32,7 +33,10 @@ const router = createRouter({
         { path: "/login", component: loginPage },
         { path: "/signup", component: signupPage },
         { path: "/profile", component: profilePage },
-        { path: "/admin", component: adminPage }
+        { path: "/admin", component: adminPage },
+        { path: "/traffic", component: trafficViewPage },
+        { path: "/fullpage", name: 'fullpage', component: announcementFullPage },
+
     ],
 });
 

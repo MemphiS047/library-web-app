@@ -12,7 +12,7 @@
         </div>
         <div class="col">
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
-            <button v-if="$store.state.is_authenticated" id="borrowButton" @click="borrow">Borrow</button>
+            <button v-if="$store.state.is_authenticated" :disabled="isActive" id="borrowButton" @click="borrow">Borrow</button>
           </div>
         </div>
       </div>
@@ -27,6 +27,7 @@ export default {
   props: ["bookId", "bookName", "authorName"],
   data() {
     return {
+      isActive: false,
       borrow_req: {
         book_id: this.$props.bookId,
         reserv_datetime: "2020-10-10",
@@ -49,6 +50,7 @@ export default {
         })
         .then((res) => {
           console.log(res);
+          this.isActive = true;
         })
         .catch((error) => {
           console.log(error);

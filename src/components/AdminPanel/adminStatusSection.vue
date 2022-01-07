@@ -9,7 +9,7 @@
             </div>
             <div class="row">
               <div class="qualificationsDiv">
-                <h5>Book ID or Name</h5>
+                <h5>Enter User ID (Student ID)</h5>
                 <input
                   v-model="searchString"
                   class="form-control adminPanelInput"

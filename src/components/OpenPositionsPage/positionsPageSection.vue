@@ -28,8 +28,10 @@
             <div
               class="d-flex flex-column-reverse align-items-end bd-hghlight openPositionButtonSection"
             >
-              <button
-                v-if="is_defualt"
+            <input v-if="$store.state.is_authenticated" class="form-check-input" type="radio" name="jobAppRadioBtn" v-bind:id="jobId" v-bind:value="jobId"> 
+
+              <!-- <button
+                v-if="is_defualt && $store.state.is_authenticated"
                 id="applyButton"
                 class="defaultBtn"
                 @click="apply"
@@ -53,7 +55,7 @@
                 disabled
               >
                 Disabled
-              </button>
+              </button> -->
             </div>
           </div>
         </div>
@@ -101,6 +103,8 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+          console.log("Deneme");
+          this.$router.push(this.$route.query.redirect || "/openpositions");
         })
         .catch((error) => {
           console.log(error);
@@ -108,6 +112,7 @@ export default {
     },
   },
   mounted: function () {
+    console.log("Auth status " + this.$store.state.is_authenticated);
     if (this.$store.state.is_authenticated == false) {
       this.is_defualt = true;
       this.is_applied = false;
@@ -126,6 +131,9 @@ export default {
         this.is_defualt = true;
       }
     }
+    console.log("A: " + this.is_applied);
+    console.log("B: " + this.is_blocked);
+    console.log("C: " + this.is_defualt);
   },
 };
 </script>

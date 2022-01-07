@@ -7,7 +7,7 @@ const store = createStore({
         lastname: "",
         is_authenticated: false,
         userid: "",
-        is_admin: 0
+        is_admin: 0,
     }),
 
     actions: {},
@@ -33,6 +33,12 @@ const store = createStore({
         },
         logout(state) {
             state.is_authenticated = false;
+            state.username = "";
+            state.firstname = "";
+            state.lastname = "";
+            state.is_authenticated = false;
+            state.userid = "";
+            state.is_admin = 0;
         },
     },
 

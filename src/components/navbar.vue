@@ -53,7 +53,11 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <img src="./../assets/exit.svg" class="logoutIcon" @click="logout"/>
+              <img
+                src="./../assets/exit.svg"
+                class="logoutIcon"
+                @click="logout"
+              />
             </li>
           </ul>
         </div>
@@ -107,13 +111,13 @@ export default {
   name: "navbar",
   data() {
     return {
-      loginButtonPressed: false,
+      loginButtonPressed: false
     };
   },
   methods: {
     logout() {
-        this.$store.commit('logout');
-        this.$router.push(this.$route.query.redirect || "/");
+      this.$store.commit("logout");
+      this.$router.push(this.$route.query.redirect || "/");
     },
 
     toggle: function () {
@@ -131,7 +135,7 @@ export default {
 </script>
 
 <style>
-.profileFirstName{
+.profileFirstName {
   padding: 10px;
 }
 .logoutIcon {
