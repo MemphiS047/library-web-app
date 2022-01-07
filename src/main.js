@@ -37,6 +37,7 @@ const router = createRouter({
         { path: "/traffic", component: trafficViewPage },
         { path: "/fullpage", name: 'fullpage', component: announcementFullPage },
 
+
     ],
 });
 
