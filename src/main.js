@@ -16,6 +16,7 @@ import openPositionPage from "./components/OpenPositionsPage/positionsPageMain.v
 import reservationMainPage from "./components/ReservationPage/reservationMainPage.vue";
 import loginPage from "./components/AuthenticationPage/loginPage.vue";
 import signupPage from "./components/AuthenticationPage/signupPage.vue";
+import announcementFullPage from "./components/AnouncementsPage/announcementFullPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -27,10 +28,12 @@ const router = createRouter({
         { path: "/reservations", component: reservationMainPage },
         { path: "/login", component: loginPage },
         { path: "/signup", component: signupPage },
+        { path: "/fullpage",name:'fullpage' ,component: announcementFullPage },
     ],
 });
 
 const app = createApp(App);
+
 app.use(router);
 app.use(VCalendar, {});
 app.use(VueAxios, axios);
