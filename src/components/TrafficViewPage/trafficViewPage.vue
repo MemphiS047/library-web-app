@@ -36,17 +36,20 @@
                   <span class="progress__text">{{ lib3_traffic }}%</span>
                 </div>
               </div>
-              <span class="trafficViewTitle">Computer Availablety</span>
+              <span class="trafficViewTitle">Computer Availability</span>
               <div id="appProgressBar">
                 <label>Kavacik North Campus</label>
-                <label>Available computers : {{ comp1 }}</label>
+                <br>
+                <label> Available computers : {{ comp1 }}</label>
               </div>
               <div id="appProgressBar">
                 <label>Kavacik South Campus</label>
+                <br>
                 <label>Available computers : {{ comp2 }}</label>
               </div>
               <div id="appProgressBar">
                 <label>Halic Campus</label>
+                <br>
                 <label>Available computers : {{ comp3 }}</label>
               </div>
             </div>
@@ -97,7 +100,7 @@ export default {
   },
   mounted: function () {
     console.log("DENEME");
-    axios.get("http://192.168.0.24:5000/api/traffic").then((response) => {
+    axios.get("http://127.0.0.1:5000/api/traffic").then((response) => {
       console.log(response.data);
       this.lib1_traffic = response.data["lib1_traffic"];
       this.lib2_traffic = response.data["lib2_traffic"];
@@ -106,7 +109,7 @@ export default {
       this.changeWidth2(this.lib2_traffic);
       this.changeWidth3(this.lib3_traffic);
     });
-    axios.get("http://192.168.0.24:5000/api/trafficComp").then((response) => {
+    axios.get("http://127.0.0.1:5000/api/trafficComp").then((response) => {
       console.log(response.data);
       this.comp1 = response.data["comp1_available"];
       this.comp2 = response.data["comp2_available"];
@@ -134,7 +137,7 @@ export default {
   width: auto !important;
   height: 27px;
   top: 39px;
-  padding: 0px 0px 0px 0px;
+  padding: auto;
   font-family: Manjari;
   font-style: normal;
   font-weight: normal;

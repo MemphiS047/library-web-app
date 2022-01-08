@@ -50,7 +50,7 @@ export default {
       console.log(this.$store.state.userid);
 
       axios
-        .post("http://192.168.0.24:5000/api/apply", {
+        .post("http://127.0.0.1:5000/api/apply", {
           job_id: document.querySelector('input[name="jobAppRadioBtn"]:checked')
             .value,
           user_id: this.$store.state.userid,
@@ -66,7 +66,7 @@ export default {
     },
   },
   mounted: function () {
-    axios.get("http://192.168.0.24:5000/api/managepositions").then((res) => {
+    axios.get("http://127.0.0.1:5000/api/managepositions").then((res) => {
       const result = JSON.parse(JSON.stringify(res.data));
       console.log(result["queryLst"][0]);
       console.log(result["queryLst"]);

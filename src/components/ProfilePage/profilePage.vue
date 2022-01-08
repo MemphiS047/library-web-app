@@ -98,7 +98,7 @@ export default {
   },
   mounted: function () {
     axios
-      .get("http://192.168.0.24:5000/api/borrow", {
+      .get("http://127.0.0.1:5000/api/borrow", {
         params: { search_string: this.$store.state.userid },
       })
       .then((response) => {

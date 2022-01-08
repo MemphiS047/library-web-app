@@ -11,10 +11,10 @@
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
             <button
               id="reserveButton"
-              @click="reserveRoom('9')"
-              :disabled="reservedDates['9']"
+              @click="reserveRoom('09')"
+              :disabled="reservedDates['09']"
             >
-              Reserve
+              {{ buttonText('09') }}
             </button>
           </div>
         </div>
@@ -36,7 +36,7 @@
               @click="reserveRoom('10')"
               :disabled="reservedDates['10']"
             >
-              Reserve
+              {{ buttonText('10') }}
             </button>
           </div>
         </div>
@@ -58,7 +58,7 @@
               @click="reserveRoom('11')"
               :disabled="reservedDates['11']"
             >
-              Reserve
+              {{ buttonText('11') }}
             </button>
           </div>
         </div>
@@ -80,7 +80,7 @@
               @click="reserveRoom('12')"
               :disabled="reservedDates['12']"
             >
-              Reserve
+              {{ buttonText('12') }}
             </button>
           </div>
         </div>
@@ -102,7 +102,7 @@
               @click="reserveRoom('13')"
               :disabled="reservedDates['13']"
             >
-              Reserve
+              {{ buttonText('13') }}
             </button>
           </div>
         </div>
@@ -124,7 +124,7 @@
               @click="reserveRoom('14')"
               :disabled="reservedDates['14']"
             >
-              Reserve
+              {{ buttonText('14') }}
             </button>
           </div>
         </div>
@@ -146,7 +146,7 @@
               @click="reserveRoom('15')"
               :disabled="reservedDates['15']"
             >
-              Reserve
+              {{ buttonText('15') }}
             </button>
           </div>
         </div>
@@ -168,7 +168,7 @@
               @click="reserveRoom('16')"
               :disabled="reservedDates['16']"
             >
-              Reserve
+              {{ buttonText('16') }}
             </button>
           </div>
         </div>
@@ -196,28 +196,10 @@ export default {
   },
   props: ["date", "reservedDates"],
   methods: {
-    // mapReservedTimes() {
-    //   const mapped_times_keys = Object.keys(this.mapped_times)
-    //   // const mapped_times_values = Object.values(this.mapped_times)
-    //    for (let j = 0; j < this.$props.reservedDates.length; j++){
-    //     for (let i = 0; i < mapped_times_keys; i++) {
-    //       if(this.$props.reservedDates[j] == mapped_times_keys[i]){
-    //         this.mapped_times[j] = true
-    //       }
-    //     }
-    //   }
-    //   console.log(this.mapped_times);
-    // },
-    // disableAllButtons() {
-    //   for (const [key, value] of Object.entries(this.$props.reservedDates)) {
-    //     this.$props.reservedDates[key] = true;
-    //     console.log(value);
-    //   }
-    // },
     reserveRoom(hour) {
       this.err_messages["err_room_full"] = "";
       axios
-        .post("http://192.168.0.24:5000/api/managereserveroom", {
+        .post("http://127.0.0.1:5000/api/managereserveroom", {
           room_id: 1,
           reservedBy: this.$store.state.userid,
           length: 1,
@@ -234,69 +216,17 @@ export default {
           console.log(error);
         });
       console.log("DISABELING BUTTONS");
-      // this.disableAllButtons();
-      // console.log("PRINTING QUERY RECEIVED FROM PARENT COMP.");
-      // console.log(this.$props.reservedDates);
+      this.$props.reservedDates[hour] = true;
     },
-    // getReservedRooms() {
-    //   /* var queryResult = []; */
-    //   /* var flag = false; */
-    //   axios
-    //     .get("http://127.0.0.1:5000/api/managereserveroom", {
-    //       params: { selectDay: this.$props.date },
-    //     })
-    //     .then((response) => {
-    //       //   const result = JSON.parse(JSON.stringify(response.data));
-    //       //   result["queryLst"].forEach((element) => {
-    //       //     this.queryResult.push({
-    //       //       room_id: element.room_id,
-    //       //       start_time: element.start_time
-    //       //     });
-    //       //   });
-    //       //  let element;
-    //       //   for(let i = 0; i < this.queryResult.length; i++ ) {
-    //       //     element = this.queryResult[i]["start_time"];
-    //       //     if(element == 2) {
-    //       //       this.flag = true;
-    //       //     }
-    //       //   }
-    //       //   console.log(this.$props.date);
-    //       this.queryResult = response.data;
-    //       console.log("Printing out reserved rooms");
-    //       console.log(this.queryResult);
-    //     });
-    //   /* return this.flag; */
-    // },
-    isAvailable() {
-      // this.getReservedRooms();
-      console.log(this.queryResult);
-      let element;
-      for (let i = 0; i < this.queryResult.length; i++) {
-        element = this.queryResult[i]["start_time"];
-        if (element == 22) {
-          this.flag = true;
-          return this.flag;
-        }
+    buttonText(hr) {
+      if (this.$props.reservedDates[hr] == true) {
+        return "Reserved!"
       }
-      return this.flag;
-    },
+      else {
+        return "Reserve";
+      }
+    }
   },
-  // mounted: function () {
-  //   this.getReservedRooms();
-  // },
-  /* computed: {
-  isDisabled() {
-    this.getReservedRooms();
-    if(this.flag  == true) {
-      console.log(this.flag);
-      return true;
-    }
-    else {
-      console.log(this.flag);
-      return false;
-    }
-  }
-} */
 };
 </script>
 
@@ -307,10 +237,10 @@ export default {
 #reserveButton {
   width: 107px;
   height: 50px;
-  color: #0d1e63;
+  color: white;
   font-size: 20px;
   font-weight: normal;
-  background: #ffff;
+  background: #0d1e63;
   border: 1px solid #0d1e63;
   box-sizing: border-box;
   border-radius: 15px;
@@ -337,5 +267,8 @@ export default {
   font-size: 22px;
   line-height: 27px;
   color: #000000;
+}
+button[disabled=disabled], button:disabled {
+    background-color: red !important;
 }
 </style>

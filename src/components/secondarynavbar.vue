@@ -28,7 +28,7 @@
         </li>
         <li class="nav-item">
           <router-link to="/reservations">
-            <a class="nav-link" href="#"> Reservation </a>
+            <a class="nav-link" href="#">Workroom Reservation </a>
           </router-link>
         </li>
         <li class="nav-item">
