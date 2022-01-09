@@ -14,7 +14,9 @@
         </div>
         <div class="col">
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
-            <button id="retrunButton" :disabled="isActive" @click="return_book">Returned</button>
+            <button id="retrunButton" :disabled="isActive" @click="return_book">
+              {{ returnButtonName }}
+            </button>
           </div>
         </div>
       </div>
@@ -25,7 +27,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "adminAddBook",
+  name: "adminBorrowStatusSection",
   props: [
     "bookId",
     "reservDatetime",
@@ -34,23 +36,29 @@ export default {
     "isReturned",
     "firstName",
     "bookName",
-    "reservationId"
+    "reservationId",
   ],
   data() {
     return {
-      isActive: false
+      isActive: false,
+      returnButtonName: "Returned",
+      message: ""
     };
   },
   methods: {
     return_book() {
       // book_id = this.$props.bookId
       axios
-        .delete("http://127.0.0.1:5000/api/borrow", {
-          data: { reservation_id: this.$props.reservationId, book_id: this.$props.bookId },
+        .delete("http://192.168.0.24:5000/api/borrow", {
+          data: {
+            reservation_id: this.$props.reservationId,
+            book_id: this.$props.bookId,
+          },
         })
         .then((res) => {
-          console.log(res["message"]);
+          this.message = res["message"];
           this.isActive = true;
+          this.returnButtonName = "Done";
         });
     },
   },
@@ -64,11 +72,10 @@ export default {
 #retrunButton {
   width: 107px;
   height: 50px;
-  background-color: #630d0d !important;
+  background-color: #630d0d;
   color: #ffff;
   font-size: 20px;
   font-weight: normal;
-
   background: #ffff;
   border: 1px solid #0d1e63;
   box-sizing: border-box;
@@ -110,5 +117,10 @@ export default {
   font-size: 22px;
   line-height: 27px;
   color: #000000;
+}
+button[disabled="disabled"],
+button:disabled {
+  background-color: rgb(61, 61, 61) !important;
+  color: white !important;
 }
 </style>

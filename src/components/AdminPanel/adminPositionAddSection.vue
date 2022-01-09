@@ -14,8 +14,6 @@
                 <input
                   v-model="jobTitle"
                   class="form-control adminPanelInput"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
                 />
               </div>
             </div>
@@ -25,8 +23,6 @@
                 <input
                   v-model="jobDescription"
                   class="form-control adminPanelInput"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
                 />
               </div>
             </div>
@@ -36,8 +32,6 @@
                 <input
                   v-model="payment"
                   class="form-control adminPanelInput"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
                 />
               </div>
             </div>
@@ -47,8 +41,6 @@
                 <input
                   v-model="jobType"
                   class="form-control adminPanelInput"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
                 />
               </div>
             </div>
@@ -64,6 +56,7 @@
                 >
                   Submit
                 </button>
+                <label class="returnMessageStyle">{{ returnMessage }}</label>
               </div>
             </div>
           </div>
@@ -74,28 +67,29 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
-  name: "adminAddBook",
+  name: "adminPositionAddSection",
   data() {
     return {
       jobTitle: "",
       jobDescription: "",
       payment: "",
-      jobType: ""
+      jobType: "",
+      returnMessage: "",
     };
   },
   methods: {
     submitForm() {
       axios
-        .post("http://127.0.0.1:5000/api/managepositions", {
+        .post("http://192.168.0.24:5000/api/managepositions", {
           job_title: this.jobTitle,
           Job_description: this.jobDescription,
           payment: this.payment,
-          job_type: this.jobType
+          job_type: this.jobType,
         })
         .then((res) => {
-          console.log(res.data["message"]);
+          this.returnMessage = res.data["message"];
         })
         .catch((error) => {
           console.log(error);
@@ -115,6 +109,7 @@ export default {
   box-sizing: border-box !important;
   border-radius: 10px !important;
 }
+
 .defaultBtn {
   width: 107px;
   height: 50px;
@@ -130,39 +125,6 @@ export default {
   border-style: solid;
 }
 
-.appliedBtn {
-  width: 107px;
-  height: 50px;
-  background-color: #1e9924 !important;
-  color: #ffff;
-  font-size: 20px;
-  font-weight: normal;
-
-  background: #ffff;
-  border: 1px solid #0d1e63;
-  box-sizing: border-box;
-  border-radius: 15px;
-  border-style: solid;
-}
-
-.blockedBtn {
-  width: 107px;
-  height: 50px;
-  background-color: #757575 !important;
-  color: rgb(187, 187, 187);
-  font-size: 20px;
-  font-weight: normal;
-
-  background: #ffff;
-  border: 1px solid #0d1e63;
-  box-sizing: border-box;
-  border-radius: 15px;
-  border-style: solid;
-}
-
-.openPositionLocationTitle {
-  width: 200px;
-}
 h5 {
   font-weight: 400;
   padding: 0px !important;
@@ -171,31 +133,7 @@ h5 {
   margin-top: 35px !important;
   padding: 0px;
 }
-.qualificationsSpan {
-  padding: 0px;
-}
-.positionPageListGroup {
-  background-color: transparent !important;
-  font-family: "Manjari";
-  padding: 0px 0px 0px 0px !important;
-}
-.resourceSectionFlex {
-  margin-top: 5px;
-}
-#retrunButton {
-  width: 107px;
-  height: 50px;
-  background-color: #630d0d !important;
-  color: #ffff;
-  font-size: 20px;
-  font-weight: normal;
 
-  background: #ffff;
-  border: 1px solid #0d1e63;
-  box-sizing: border-box;
-  border-radius: 15px;
-  border-style: solid;
-}
 .adminAddBookDiv {
   width: 100%;
   height: 100%;
@@ -204,19 +142,6 @@ h5 {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
-}
-.resourceAuthor {
-  width: 419px;
-  height: 27px;
-  left: 27px;
-  top: 39px;
-  padding: 0px 10px 0px 10px;
-  font-family: Manjari;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 27px;
-  color: #000000;
 }
 
 .openPositionTitle {

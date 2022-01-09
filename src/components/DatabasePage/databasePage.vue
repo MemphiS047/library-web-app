@@ -23,7 +23,6 @@
               </button>
             </form>
           </div>
-          <a class="advancedSearchLink">Advanced Search</a>
         </div>
       </div>
       <div class="row announcementsRow">
@@ -33,6 +32,7 @@
           :bookId="result.bookId"
           :bookName="result.bookName"
           :authorName="result.authorName"
+          :isAvailable="result.is_available"
         />
       </div>
     </div>
@@ -60,11 +60,13 @@ export default {
     },
     getResults() {
       axios
-        .get("http://127.0.0.1:5000/api/managebooks", {
+        .get("http://192.168.0.24:5000/api/managebooks", {
           params: { search_string: this.searchString },
         })
         .then((response) => {
           this.queryResult = response.data["queryLst"];
+          console.log("QUERY RESULT FOR SEARCH $$")
+          console.log(this.queryResult)
         });
     },
   },
@@ -93,7 +95,6 @@ export default {
   border-radius: 10px;
   padding-bottom: 35px;
 }
-/* SEARCH SECTION STYLING */
 .searchSectionDBFlex {
   height: 70px;
 }
@@ -147,15 +148,5 @@ export default {
   font-size: 25px;
   line-height: 27px;
   color: #000000;
-}
-.advancedSearchLink {
-  width: 159px;
-  height: 22px;
-  left: 72px;
-  top: 133px;
-  font-size: 20px;
-  text-decoration: none;
-  color: #0d1e63;
-  margin-left: 10px;
 }
 </style>

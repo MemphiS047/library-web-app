@@ -8,8 +8,8 @@
       <div class="row announcementsRow">
         <announcementsSection 
         v-for="result in queryResult"
-        :key="result.announcementID"
-        :announcementTitle="result.announcementTitle"
+        :key="result.announce_id"
+        :announcementTitle="result.announcement_title"
         :message="result.message"/>
       </div>
     </div>
@@ -30,16 +30,8 @@ export default {
     };
   },
   mounted: function () {
-    axios.get("http://127.0.0.1:5000/api/manageannouncements").then((response) => {
-      const result = JSON.parse(JSON.stringify(response.data));
-      console.log(result["queryLst"][0]);
-      result["queryLst"].forEach((element) => {
-        this.queryResult.push({
-          announcementID: element.announce_id,
-          announcementTitle: element.announcement_title,
-          message: element.message
-        });
-      });
+    axios.get("http://192.168.0.24:5000/api/manageannouncements").then((response) => {
+      this.queryResult = response.data["queryLst"];
     });
   },
 };
@@ -54,9 +46,11 @@ export default {
   left: 97px;
   top: 178px;
 }
+
 .announcementsRow {
   padding: 15px;
 }
+
 #announcementsID {
   margin-top: 50px;
   margin-bottom: 50px;

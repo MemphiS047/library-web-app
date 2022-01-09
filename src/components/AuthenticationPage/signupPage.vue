@@ -14,24 +14,24 @@
           />
           <!-- Account Already exists -->
           <label
-            v-if="err_messages['err_acc_exists'] != null"
+            v-if="errMessages['err_acc_exists'] != null"
             class="error_message"
           >
-            {{ err_messages["err_acc_exists"]["message"] }}
+            {{ errMessages["err_acc_exists"]["message"] }}
           </label>
           <!-- Invalid Email -->
           <label
-            v-if="err_messages['err_invalid_email'] != null"
+            v-if="errMessages['err_invalid_email'] != null"
             class="error_message"
           >
-            {{ err_messages["err_invalid_email"] }}
+            {{ errMessages["err_invalid_email"] }}
           </label>
           <!-- No Email -->
           <label
-            v-if="err_messages['err_no_email'] != null"
+            v-if="errMessages['err_no_email'] != null"
             class="error_message"
           >
-            {{ err_messages["err_no_email"] }}
+            {{ errMessages["err_no_email"] }}
           </label>
         </div>
         <div class="form-group">
@@ -45,10 +45,10 @@
           />
           <!-- No Password -->
           <label
-            v-if="err_messages['err_no_pass'] != null"
+            v-if="errMessages['err_no_pass'] != null"
             class="error_message"
           >
-            {{ err_messages["err_no_pass"] }}
+            {{ errMessages["err_no_pass"] }}
           </label>
         </div>
         <div class="form-group">
@@ -93,13 +93,12 @@ export default {
         is_admin: "false",
         password: "",
       },
-      err_messages: {
+      errMessages: {
         err_acc_exists: "",
         err_no_pass: "",
         err_no_email: "",
         err_invalid_email: "",
       },
-      is_registered: false,
     };
   },
   methods: {
@@ -108,51 +107,54 @@ export default {
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
-    submitForm() {
-      this.err_messages["err_acc_exists"] = "";
-      this.err_messages["err_no_pass"] = "";
-      this.err_messages["err_no_email"] = "";
-      this.err_messages["err_invalid_email"] = "";
-
+    resetMessages() {
+      this.errMessages["err_acc_exists"] = "";
+      this.errMessages["err_no_pass"] = "";
+      this.errMessages["err_no_email"] = "";
+      this.errMessages["err_invalid_email"] = "";
+    },
+    setMessages() {
       if (!this.user.password) {
-        this.err_messages["err_no_pass"] = "Password required.";
+        this.errMessages["err_no_pass"] = "Password required.";
       }
       if (!this.user.username) {
-        this.err_messages["err_no_email"] = "Username required.";
+        this.errMessages["err_no_email"] = "Username required.";
       } else if (!this.validEmail(this.user.username)) {
-        this.err_messages["err_invalid_email"] = "Valid username required.";
+        this.errMessages["err_invalid_email"] = "Valid username required.";
       }
+    },
+    submitForm() {
+      this.resetMessages();
+      this.setMessages();
       if (
-        !this.err_messages["err_acc_exists"] != "" ||
-        !this.err_messages["err_no_pass"] != "" ||
-        !this.err_messages["err_no_email"] != "" ||
-        !this.err_messages["err_invalid_email"] != ""
+        this.errMessages["err_acc_exists"] != "" &&
+        this.errMessages["err_no_pass"] != "" &&
+        this.errMessages["err_no_email"] != "" &&
+        this.errMessages["err_invalid_email"] != "" &&
+        this.errMessages["err_no_pass"] != "Username required." &&
+        this.errMessages["err_no_pass"] != "Password required." &&
+        this.errMessages["err_invalid_email"] != "Valid username required."
       ) {
         this.registerUser();
-        this.$router.push({ name: "auth", query: { redirect: "/login" } });
-        return true;
       }
     },
 
     registerUser() {
       axios
-        .post("http://127.0.0.1:5000/api/register", {
+        .post("http://192.168.0.24:5000/api/register", {
           firstname: this.user.firstname,
           lastname: this.user.lastname,
           faculty: this.user.faculty,
           department: this.user.department,
           username: this.user.username,
-          is_admin: 0,
           password: this.user.password,
         })
         .then((res) => {
           if (res.data["message"] == "User created successfully") {
-            this.err_messages["err_acc_exists"] = "";
-            this.is_registered = true;
-            this.$router.push(this.$route.query.redirect || "/login");
+            this.errMessages["err_acc_exists"] = "";
+            this.$router.push({ name: "auth", query: { redirect: "/login" } });
           } else {
-            this.err_messages["err_acc_exists"] = res.data;
-            this.is_registered = false;
+            this.errMessages["err_acc_exists"] = res.data;
           }
         })
         .catch((error) => {
