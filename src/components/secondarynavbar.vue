@@ -26,7 +26,7 @@
             <a class="nav-link" href="#"> Open Positions </a>
           </router-link>
         </li>
-        <li class="nav-item">
+        <li v-if="$store.state.is_authenticated" class="nav-item">
           <router-link to="/reservations">
             <a class="nav-link" href="#">Workroom Reservation </a>
           </router-link>

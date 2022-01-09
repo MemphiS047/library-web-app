@@ -4,88 +4,93 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <div class="row">
-              <h4 class="trafficViewTitle">Library Crowdness</h4>
-              <div id="appProgressBar">
-                <label>Kavacik North Campus</label>
-                <div class="progress">
-                  <div
-                    class="progress__fill_lib1"
-                    v-bind:style="{
-                      width: computedWith1,
-                      background: barColor1,
-                    }"
-                  ></div>
-                  <span class="progress__text">{{ lib1_traffic }}%</span>
+            <div class="child">
+              <h1 class="trafficViewTitle">Campus</h1>
+              <div class="column">
+                <div id="campus">
+                  <h5>Kavacik North Campus</h5>
+                </div>
+                <div id="campus">
+                  <h5>Kavacik South Campus</h5>
+                </div>
+                <div id="campus">
+                  <h5>Halic Campus</h5>
                 </div>
               </div>
-              <div id="appProgressBar">
-                <label>Kavacik South Campus</label>
-                <div class="progress">
-                  <div
-                    class="progress__fill_lib2"
-                    v-bind:style="{
-                      width: computedWith2,
-                      background: barColor2,
-                    }"
-                  ></div>
-                  <span class="progress__text">{{ lib2_traffic }}%</span>
+            </div>
+            <div class="child">
+              <h1 class="trafficViewTitle">Library Crowdness</h1>
+              <div class="column2">
+                <div id="appProgressBar">
+                  <div class="progress">
+                    <div
+                      class="progress__fill_lib1"
+                      v-bind:style="{
+                        width: computedWith1,
+                        background: barColor1,
+                      }"
+                    ></div>
+                  </div>
                 </div>
-              </div>
-              <div id="appProgressBar">
-                <label>Halic Campus</label>
-                <div class="progress">
-                  <div
-                    class="progress__fill_lib3"
-                    v-bind:style="{
-                      width: computedWith3,
-                      background: barColor3,
-                    }"
-                  ></div>
-                  <span class="progress__text">{{ lib3_traffic }}%</span>
+                <div id="appProgressBar">
+                  <div class="progress">
+                    <div
+                      class="progress__fill_lib2"
+                      v-bind:style="{
+                        width: computedWith2,
+                        background: barColor2,
+                      }"
+                    ></div>
+                  </div>
                 </div>
-              </div>
-              <span class="trafficViewTitle">Computer Availability</span>
-              <div id="appProgressBar">
-                <label>Kavacik North Campus</label>
-                <br />
-                <label> Available computers : {{ comp1 }}</label>
-              </div>
-              <div id="appProgressBar">
-                <label>Kavacik South Campus</label>
-                <br />
-                <label>Available computers : {{ comp2 }}</label>
-              </div>
-              <div id="appProgressBar">
-                <label>Halic Campus</label>
-                <br />
-                <label>Available computers : {{ comp3 }}</label>
+                <div id="appProgressBar">
+                  <div class="progress">
+                    <div
+                      class="progress__fill_lib3"
+                      v-bind:style="{
+                        width: computedWith3,
+                        background: barColor3,
+                      }"
+                    ></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="child">
               <h1 class="trafficViewTitle">Computer Availability</h1>
               <div class="column">
-                <div id="computerNumber">   
-                <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Circle-icons-computer.svg" alt="computerIcon">
+                <div id="computerNumber">
+                  <img
+                    class="image"
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/02/Circle-icons-computer.svg"
+                    alt="computerIcon"
+                  />
                   <label> {{ comp1 }}</label>
                 </div>
                 <div id="computerNumber">
-                <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Circle-icons-computer.svg" alt="computerIcon">
+                  <img
+                    class="image"
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/02/Circle-icons-computer.svg"
+                    alt="computerIcon"
+                  />
                   <label> {{ comp2 }}</label>
                 </div>
                 <div id="computerNumber">
-                <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Circle-icons-computer.svg" alt="computerIcon">
+                  <img
+                    class="image"
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/02/Circle-icons-computer.svg"
+                    alt="computerIcon"
+                  />
                   <label> {{ comp3 }}</label>
                 </div>
               </div>
-            </div>            
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 export default {
@@ -115,9 +120,17 @@ export default {
     computedWith3: function () {
       return this.width3;
     },
-    changeBarColor: function () {
+    changeBarColor1: function () {
       this.calculateStyleChange();
-      return this.barColor;
+      return this.barColor1;
+    },
+    changeBarColor2: function () {
+      this.calculateStyleChange();
+      return this.barColor2;
+    },
+    changeBarColor3: function () {
+      this.calculateStyleChange();
+      return this.barColor3;
     },
   },
   methods: {
@@ -130,6 +143,33 @@ export default {
     changeWidth3(random_number) {
       this.width3 = `${random_number}%`;
     },
+    changeColor1() {
+      if (this.lib1_traffic > 0 && this.lib1_traffic < 30) {
+        this.barColor1 = "#33cc33";
+      } else if (this.lib1_traffic > 31 && this.lib1_traffic < 70) {
+        this.barColor1 = "#ffcc00";
+      } else {
+        this.barColor1 = "#990000";
+      }
+    },
+    changeColor2() {
+      if (this.lib2_traffic > 0 && this.lib2_traffic < 30) {
+        this.barColor2 = "#33cc33";
+      } else if (this.lib2_traffic > 31 && this.lib2_traffic < 70) {
+        this.barColor2 = "#ffcc00";
+      } else {
+        this.barColor2 = "#990000";
+      }
+    },
+    changeColor3() {
+      if (this.lib3_traffic > 0 && this.lib3_traffic < 30) {
+        this.barColor3 = "#33cc33";
+      } else if (this.lib3_traffic > 31 && this.lib3_traffic < 70) {
+        this.barColor3 = "#ffcc00";
+      } else {
+        this.barColor3 = "#990000";
+      }
+    },
   },
   mounted: function () {
     console.log("DENEME");
@@ -141,28 +181,9 @@ export default {
       this.changeWidth1(this.lib1_traffic);
       this.changeWidth2(this.lib2_traffic);
       this.changeWidth3(this.lib3_traffic);
-      if (this.lib1_traffic > 0 && this.lib1_traffic < 30) {
-        this.barColor1 = "#33cc33";
-      } else if (this.lib1_traffic > 31 && this.lib1_traffic < 70) {
-        this.barColor1 = "#ffcc00";
-      } else {
-        this.barColor1 = "#990000";
-      }
-      if (this.lib2_traffic > 0 && this.lib2_traffic < 30) {
-        this.barColor2 = "#33cc33";
-      } else if (this.lib2_traffic > 31 && this.lib2_traffic < 70) {
-        this.barColor2 = "#ffcc00";
-      } else {
-        this.barColor2 = "#990000";
-      }
-
-      if (this.lib3_traffic > 0 && this.lib3_traffic < 30) {
-        this.barColor3 = "#33cc33";
-      } else if (this.lib3_traffic > 31 && this.lib3_traffic < 70) {
-        this.barColor3 = "#ffcc00";
-      } else {
-        this.barColor3 = "#990000";
-      }
+      this.changeColor1();
+      this.changeColor2();
+      this.changeColor3();
     });
     axios.get("http://192.168.0.24:5000/api/trafficComp").then((response) => {
       console.log(response.data);
@@ -217,34 +238,23 @@ export default {
   border: solid black;
   border-width: 1px;
 }
-
 .progress__fill_lib1 {
   /* width: 0%; */
   height: 100%;
-  /* background: #009579; */
+  background: #009579;
   transition: all 0.2s;
 }
 .progress__fill_lib2 {
   /* width: 0%; */
   height: 100%;
-  /* background: #009579; */
+  background: #009579;
   transition: all 0.2s;
 }
 .progress__fill_lib3 {
   /* width: 0%; */
   height: 100%;
-  /* background: #70000a; */
+  background: #009579;
   transition: all 0.2s;
-}
-
-.progress__text {
-  position: relative;
-  top: 70%;
-  right: 5px;
-  /* width: 100px; */
-  transform: translateY(-50%);
-  font: bold 14px "Quicksand", sans-serif;
-  color: black;
 }
 .col {
   display: flex;
@@ -257,14 +267,13 @@ export default {
 }
 .row {
   margin-top: 20px;
-  /* background-color: #0d1e6 */;
+  /* background-color: #0d1e6 */
 }
 .image {
   height: 25px;
-  /* weight: 25px; */
 }
 .column2 {
-/*   justify-content: center;
+  /*   justify-content: center;
   text-align: center; */
   margin-left: 35px;
 }

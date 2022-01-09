@@ -127,13 +127,10 @@ export default {
       this.resetMessages();
       this.setMessages();
       if (
-        this.errMessages["err_acc_exists"] != "" &&
-        this.errMessages["err_no_pass"] != "" &&
-        this.errMessages["err_no_email"] != "" &&
-        this.errMessages["err_invalid_email"] != "" &&
-        this.errMessages["err_no_pass"] != "Username required." &&
-        this.errMessages["err_no_pass"] != "Password required." &&
-        this.errMessages["err_invalid_email"] != "Valid username required."
+        !this.errMessages["err_acc_exists"] != "" &&
+        !this.errMessages["err_no_pass"] != "" &&
+        !this.errMessages["err_no_email"] != "" &&
+        !this.errMessages["err_invalid_email"] != ""
       ) {
         this.registerUser();
       }
@@ -151,8 +148,9 @@ export default {
         })
         .then((res) => {
           if (res.data["message"] == "User created successfully") {
+            console.log(res.data);
             this.errMessages["err_acc_exists"] = "";
-            this.$router.push({ name: "auth", query: { redirect: "/login" } });
+            this.$router.push(this.$route.query.redirect || "/login");
           } else {
             this.errMessages["err_acc_exists"] = res.data;
           }

@@ -1,37 +1,39 @@
 <template>
-  <form @submit.prevent="submitForm" method="get" class="h-80">
-    <div class="form-group">
-      <label for="username">User Name</label>
-      <input
-        v-model="userCredentials.username"
-        type="text"
-        class="form-control"
-        placeholder="Enter username"
-      />
-      <label v-if="errMessages['err_no_email'] != null" class="error_message">
-        {{ errMessages["err_no_email"] }}
-      </label>
-      <label
-        v-if="errMessages['err_invalid_credentials'] != null"
-        class="error_message"
-      >
-        {{ errMessages["err_invalid_credentials"] }}
-      </label>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input
-        v-model="userCredentials.password"
-        type="password"
-        placeholder="Password"
-      />
-      <label v-if="errMessages['err_no_pass'] != null" class="error_message">
-        {{ errMessages["err_no_pass"] }}
-      </label>
-    </div>
+  <div class="formDiv">
+    <form @submit.prevent="submitForm" method="get" class="h-80">
+      <div class="form-group">
+        <label for="username">User Name</label>
+        <input
+          v-model="userCredentials.username"
+          type="text"
+          class="form-control"
+          placeholder="Enter username"
+        />
+        <label v-if="errMessages['err_no_email'] != null" class="error_message">
+          {{ errMessages["err_no_email"] }}
+        </label>
+        <label
+          v-if="errMessages['err_invalid_credentials'] != null"
+          class="error_message"
+        >
+          {{ errMessages["err_invalid_credentials"] }}
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          v-model="userCredentials.password"
+          type="password"
+          placeholder="Password"
+        />
+        <label v-if="errMessages['err_no_pass'] != null" class="error_message">
+          {{ errMessages["err_no_pass"] }}
+        </label>
+      </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -69,10 +71,8 @@ export default {
     },
     redirectPage() {
       if (this.$store.state.is_admin == 1) {
-        this.$router.push({ name: "admin", query: { redirect: "/admin" } });
         this.$router.push(this.$route.query.redirect || "/admin");
       } else {
-        this.$router.push({ name: "auth", query: { redirect: "/" } });
         this.$router.push(this.$route.query.redirect || "/");
       }
     },
@@ -106,6 +106,8 @@ export default {
             this.apiResponse = res.data;
             this.setUserState(res);
             this.$store.commit("login");
+            console.log(res.data);
+            this.redirectPage();
           } else {
             this.errMessages["err_invalid_credentials"] = res.data["message"];
           }
@@ -119,6 +121,9 @@ export default {
 </script>
 
 <style scoped>
+.formDiv{
+  padding: 0px 200px 0px 200px;
+}
 .error_message {
   color: rgb(129, 0, 0);
   font-weight: bold;
@@ -127,7 +132,7 @@ export default {
 form {
   border: 5px solid #f1f1f1;
   margin-top: 150px;
-  margin-left: 200px;
+  /* margin-left: 200px; */
   margin-bottom: 30px;
 }
 input[type="text"],

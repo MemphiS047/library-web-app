@@ -208,6 +208,7 @@ h5 {
   background-color: transparent !important;
   font-family: "Manjari";
   padding: 0px 0px 0px 0px !important;
+  color: white;
 }
 .resourceSectionFlex {
   margin-top: 5px;

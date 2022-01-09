@@ -6,7 +6,6 @@
         {{ message }}
       </p>
     </div>
-    <a @click="sendData()" class="readMoreLink">Read More...</a>
   </div>
 </template>
 
