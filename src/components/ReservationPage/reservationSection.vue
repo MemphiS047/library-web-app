@@ -220,14 +220,9 @@ export default {
     },
     buttonText(hr) {
       if (this.$props.reservedDates[hr] == true) {
-<<<<<<< HEAD
         return "Not Available"
       }
       else {
-=======
-        return "Reserved!";
-      } else {
->>>>>>> feature/reactive-btn
         return "Reserve";
       }
     },
@@ -274,15 +269,9 @@ export default {
   line-height: 27px;
   color: white;
 }
-<<<<<<< HEAD
 button[disabled=disabled], button:disabled {
     background-color: gray !important;
     color: white !important;
-=======
-button[disabled="disabled"],
-button:disabled {
-  background-color: red !important;
->>>>>>> feature/reactive-btn
 }
 /* button:active {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset !important,
