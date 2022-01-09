@@ -23,7 +23,6 @@
               </button>
             </form>
           </div>
-          <a class="advancedSearchLink">Advanced Search</a>
         </div>
       </div>
       <div class="row announcementsRow">
@@ -96,7 +95,6 @@ export default {
   border-radius: 10px;
   padding-bottom: 35px;
 }
-/* SEARCH SECTION STYLING */
 .searchSectionDBFlex {
   height: 70px;
 }
@@ -150,15 +148,5 @@ export default {
   font-size: 25px;
   line-height: 27px;
   color: #000000;
-}
-.advancedSearchLink {
-  width: 159px;
-  height: 22px;
-  left: 72px;
-  top: 133px;
-  font-size: 20px;
-  text-decoration: none;
-  color: #0d1e63;
-  margin-left: 10px;
 }
 </style>

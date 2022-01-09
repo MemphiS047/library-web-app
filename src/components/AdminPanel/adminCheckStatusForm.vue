@@ -31,7 +31,7 @@
         </div>
       </div>
     </form>
-    <borrowStatusSection
+    <adminBorrowStatusSection
       v-for="result in queryResult"
       :key="result.reservation_id"
       :reservationId="result.reservation_id"
@@ -48,15 +48,14 @@
 
 <script>
 import axios from "axios";
-import borrowStatusSection from "./borrowStatusSection.vue";
+import adminBorrowStatusSection from "./adminBorrowStatusSection.vue";
 export default {
-  name: "adminAddBook",
+  name: "adminCheckStatusForm",
   components: {
-    borrowStatusSection,
+    adminBorrowStatusSection,
   },
   data() {
     return {
-      bookSearchStatus: "",
       searchString: "",
       queryResult: [],
     };
@@ -89,39 +88,6 @@ export default {
   border-radius: 10px !important;
 }
 
-.appliedBtn {
-  width: 107px;
-  height: 50px;
-  background-color: #1e9924 !important;
-  color: #ffff;
-  font-size: 20px;
-  font-weight: normal;
-
-  background: #ffff;
-  border: 1px solid #0d1e63;
-  box-sizing: border-box;
-  border-radius: 15px;
-  border-style: solid;
-}
-
-.blockedBtn {
-  width: 107px;
-  height: 50px;
-  background-color: #757575 !important;
-  color: rgb(187, 187, 187);
-  font-size: 20px;
-  font-weight: normal;
-
-  background: #ffff;
-  border: 1px solid #0d1e63;
-  box-sizing: border-box;
-  border-radius: 15px;
-  border-style: solid;
-}
-
-.openPositionLocationTitle {
-  width: 200px;
-}
 h5 {
   font-weight: 400;
   padding: 0px !important;
@@ -130,31 +96,7 @@ h5 {
   margin-top: 35px !important;
   padding: 0px;
 }
-.qualificationsSpan {
-  padding: 0px;
-}
-.positionPageListGroup {
-  background-color: transparent !important;
-  font-family: "Manjari";
-  padding: 0px 0px 0px 0px !important;
-}
-.resourceSectionFlex {
-  margin-top: 5px;
-}
-#retrunButton {
-  width: 107px;
-  height: 50px;
-  background-color: #630d0d !important;
-  color: #ffff;
-  font-size: 20px;
-  font-weight: normal;
 
-  background: #ffff;
-  border: 1px solid #0d1e63;
-  box-sizing: border-box;
-  border-radius: 15px;
-  border-style: solid;
-}
 .adminAddBookDiv {
   width: 100%;
   height: 100%;
@@ -163,19 +105,6 @@ h5 {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
-}
-.resourceAuthor {
-  width: 419px;
-  height: 27px;
-  left: 27px;
-  top: 39px;
-  padding: 0px 10px 0px 10px;
-  font-family: Manjari;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 27px;
-  color: #000000;
 }
 
 .openPositionTitle {

@@ -3,37 +3,30 @@
     <div class="form-group">
       <label for="username">User Name</label>
       <input
-        v-model="user.username"
+        v-model="userCredentials.username"
         type="text"
         class="form-control"
-        id="username"
-        aria-describedby="emailHelp"
-        placeholder="Enter user name"
+        placeholder="Enter username"
       />
-      <!-- No Email -->
-      <label v-if="err_messages['err_no_email'] != null" class="error_message">
-        {{ err_messages["err_no_email"] }}
+      <label v-if="errMessages['err_no_email'] != null" class="error_message">
+        {{ errMessages["err_no_email"] }}
       </label>
-      <!-- Invalid Credentials -->
       <label
-        v-if="err_messages['err_invalid_credentials'] != null"
+        v-if="errMessages['err_invalid_credentials'] != null"
         class="error_message"
       >
-        {{ err_messages["err_invalid_credentials"] }}
+        {{ errMessages["err_invalid_credentials"] }}
       </label>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
       <input
-        v-model="user.password"
+        v-model="userCredentials.password"
         type="password"
-        class="form-control"
-        id="exampleInputPassword1"
         placeholder="Password"
       />
-      <!-- No Password -->
-      <label v-if="err_messages['err_no_pass'] != null" class="error_message">
-        {{ err_messages["err_no_pass"] }}
+      <label v-if="errMessages['err_no_pass'] != null" class="error_message">
+        {{ errMessages["err_no_pass"] }}
       </label>
     </div>
 
@@ -48,71 +41,73 @@ export default {
   name: "loginpage",
   data() {
     return {
-      api_response: null,
-      user: {
+      apiResponse: null,
+      userCredentials: {
         username: "",
         password: "",
       },
-      err_messages: {
+      errMessages: {
         err_invalid_credentials: "",
         err_no_pass: "",
         err_no_email: "",
       },
-      is_authenticated: false,
     };
   },
   methods: {
-    submitForm() {
-      this.err_messages["err_invalid_credentials"] = "";
-      this.err_messages["err_no_pass"] = "";
-      this.err_messages["err_no_email"] = "";
-
-      if (!this.user.password) {
-        this.err_messages["err_no_pass"] = "Password required.";
+    resetMessages() {
+      this.errMessages["err_invalid_credentials"] = "";
+      this.errMessages["err_no_pass"] = "";
+      this.errMessages["err_no_email"] = "";
+    },
+    setMessages() {
+      if (!this.userCredentials.password) {
+        this.errMessages["err_no_pass"] = "Password required.";
       }
-      if (!this.user.username) {
-        this.err_messages["err_no_email"] = "Username required.";
-      }
-      if (
-        !this.err_messages["err_invalid_credentials"] != "" ||
-        !this.err_messages["err_no_pass"] != "" ||
-        !this.err_messages["err_no_email"] != ""
-      ) {
-        this.loginUser();
-        if (this.$store.state.is_admin == 1) {
-          this.$router.push({ name: "admin", query: { redirect: "/admin" } });
-        } else {
-          this.$router.push({ name: "auth", query: { redirect: "/" } });
-        }
-        return true;
+      if (!this.userCredentials.username) {
+        this.errMessages["err_no_email"] = "Username required.";
       }
     },
-
+    redirectPage() {
+      if (this.$store.state.is_admin == 1) {
+        this.$router.push({ name: "admin", query: { redirect: "/admin" } });
+        this.$router.push(this.$route.query.redirect || "/admin");
+      } else {
+        this.$router.push({ name: "auth", query: { redirect: "/" } });
+        this.$router.push(this.$route.query.redirect || "/");
+      }
+    },
+    submitForm() {
+      this.resetMessages();
+      this.setMessages();
+      if (
+        !this.errMessages["err_invalid_credentials"] != "" ||
+        !this.errMessages["err_no_pass"] != "" ||
+        !this.errMessages["err_no_email"] != ""
+      ) {
+        this.loginUser();
+        this.redirectPage();
+      }
+    },
+    setUserState(res) {
+      this.$store.state.userid = res.data["credentials"]["userid"];
+      this.$store.state.username = res.data["credentials"]["username"];
+      this.$store.state.firstname = res.data["credentials"]["firstname"];
+      this.$store.state.lastname = res.data["credentials"]["lastname"];
+      this.$store.state.is_admin = res.data["credentials"]["is_admin"];
+    },
     loginUser() {
-      this.error_message = [];
       axios
         .post("http://192.168.0.24:5000/api/auth", {
-          username: this.user.username,
-          password: this.user.password,
+          username: this.userCredentials.username,
+          password: this.userCredentials.password,
         })
         .then((res) => {
-          console.log(res.data["credentials"]);
           if (res.data["message"] === "Authentication successful") {
-            this.api_response = res.data;
-            this.is_authenticated = true;
-            if (res.data["credentials"]["is_admin"] == 1) {
-              this.$router.push(this.$route.query.redirect || "/admin");
-            } else {
-              this.$router.push(this.$route.query.redirect || "/");
-            }
-            this.$store.state.userid = res.data["credentials"]["userid"];
-            this.$store.state.username = res.data["credentials"]["username"];
-            this.$store.state.firstname = res.data["credentials"]["firstname"];
-            this.$store.state.lastname = res.data["credentials"]["lastname"];
-            this.$store.state.is_admin = res.data["credentials"]["is_admin"];
+            this.apiResponse = res.data;
+            this.setUserState(res);
             this.$store.commit("login");
           } else {
-            this.err_messages["err_invalid_credentials"] = res.data["message"];
+            this.errMessages["err_invalid_credentials"] = res.data["message"];
           }
         })
         .catch((error) => {

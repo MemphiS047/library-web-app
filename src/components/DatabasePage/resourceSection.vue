@@ -61,7 +61,6 @@ export default {
           this.isActive = true;
           this.is_returned = 1;
           this.varIsAvailable = false;
-          console.log("AFTER BORROW " + this.varIsAvailable);
         })
         .catch((error) => {
           console.log(error);
@@ -152,7 +151,9 @@ button {
 }
 button[disabled=""],
 button:disabled {
-  background-color: rgb(44, 44, 44) !important;
+  background-color: rgb(255, 0, 0) !important;
 }
-
+button:disabled {
+  background-color: red !important;
+}
 </style>

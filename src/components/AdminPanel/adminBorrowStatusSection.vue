@@ -27,7 +27,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "adminAddBook",
+  name: "adminBorrowStatusSection",
   props: [
     "bookId",
     "reservDatetime",
@@ -42,6 +42,7 @@ export default {
     return {
       isActive: false,
       returnButtonName: "Returned",
+      message: ""
     };
   },
   methods: {
@@ -55,10 +56,9 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res["message"]);
+          this.message = res["message"];
           this.isActive = true;
           this.returnButtonName = "Done";
-          document.getElementById('retrunButton').style.backgroundColor = "grey";
         });
     },
   },
