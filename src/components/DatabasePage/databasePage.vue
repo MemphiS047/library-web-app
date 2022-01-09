@@ -33,6 +33,7 @@
           :bookId="result.bookId"
           :bookName="result.bookName"
           :authorName="result.authorName"
+          :isAvailable="result.is_available"
         />
       </div>
     </div>
@@ -65,6 +66,8 @@ export default {
         })
         .then((response) => {
           this.queryResult = response.data["queryLst"];
+          console.log("QUERY RESULT FOR SEARCH $$")
+          console.log(this.queryResult)
         });
     },
   },

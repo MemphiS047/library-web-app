@@ -14,11 +14,11 @@
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
             <button
               v-if="$store.state.is_authenticated"
-              :disabled="isActive"
+              :disabled="!varIsAvailable"
               id="borrowButton"
               @click="borrow"
             >
-              {{ borrowButtonLable }}
+              {{ buttonText(varIsAvailable) }}
             </button>
           </div>
         </div>
@@ -31,7 +31,7 @@
 import axios from "axios";
 export default {
   name: "resourceSection",
-  props: ["bookId", "bookName", "authorName"],
+  props: ["bookId", "bookName", "authorName", "isAvailable"],
   data() {
     return {
       isActive: false,
@@ -42,7 +42,7 @@ export default {
         user_id: this.$store.state.userid,
         is_returned: 0,
       },
-      borrowButtonLable: "Borrow",
+      varIsAvailable: this.$props.isAvailable,
     };
   },
   methods: {
@@ -59,17 +59,32 @@ export default {
         .then((res) => {
           console.log(res);
           this.isActive = true;
-          this.borrowButtonLable = "Borrowed";
+          this.is_returned = 1;
+          this.varIsAvailable = false;
+          console.log("AFTER BORROW " + this.varIsAvailable);
         })
         .catch((error) => {
           console.log(error);
         });
     },
+    buttonText() {
+      if (this.varIsAvailable) {
+        return "Borrow";
+      } else {
+        return "Borrowed";
+      }
+    },
   },
 };
 </script>
 
-<style>
+<style scoped>
+button {
+  z-index: 1;
+}
+.borrowBookStyling {
+  z-index: 2;
+}
 .borrowedButtonStyle {
   width: 107px;
   height: 50px;
@@ -135,4 +150,9 @@ export default {
   line-height: 27px;
   color: #000000;
 }
+button[disabled=""],
+button:disabled {
+  background-color: rgb(44, 44, 44) !important;
+}
+
 </style>

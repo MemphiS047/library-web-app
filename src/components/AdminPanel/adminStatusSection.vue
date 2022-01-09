@@ -9,7 +9,7 @@
             </div>
             <div class="row">
               <div class="qualificationsDiv">
-                <h5>Enter User ID (Student ID)</h5>
+                <h5>Enter Username of the Student</h5>
                 <input
                   v-model="searchString"
                   class="form-control adminPanelInput"
@@ -33,15 +33,15 @@
     </form>
     <borrowStatusSection
       v-for="result in queryResult"
-      :key="result.reservationId"
-      :reservationId="result.reservationId"
-      :bookId="result.bookId"
-      :reservDatetime="result.reservDatetime"
+      :key="result.reservation_id"
+      :reservationId="result.reservation_id"
+      :bookId="result.book_id"
+      :reservDatetime="result.reserv_datetime"
       :duration="result.duration"
-      :userId="result.userId"
-      :isReturned="result.isReturned"
-      :firstName="result.firstName"
-      :bookName="result.bookName"
+      :userId="result.user_id"
+      :isReturned="result.is_returned"
+      :firstName="result.firstname"
+      :bookName="result.bookname"
     />
   </div>
 </template>
@@ -58,7 +58,7 @@ export default {
     return {
       bookSearchStatus: "",
       searchString: "",
-      queryResult: []
+      queryResult: [],
     };
   },
   methods: {
@@ -71,20 +71,7 @@ export default {
           params: { search_string: this.searchString },
         })
         .then((response) => {
-          const result = JSON.parse(JSON.stringify(response.data));
-          result["queryLst"].forEach((element) => {
-            this.queryResult.push({
-              bookId: element.book_id,
-              reservDatetime: element.reserv_datetime,
-              duration: element.duration,
-              userId: element.user_id,
-              isReturned: element.is_returned,
-              firstName: element.firstname,
-              bookName: element.bookname,
-              reservationId: element.reservation_id
-            });
-          });
-          console.log(this.queryResult);
+          this.queryResult = response.data["queryLst"];
         });
     },
   },
