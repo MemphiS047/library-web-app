@@ -6,7 +6,7 @@
           <v-calendar
             is-expanded
             :columns="2"
-            :attributes="attributes"
+            :attributes="attrs"
             @dayclick="dayClicked"
             :min-date='new Date()'
           />
@@ -28,7 +28,6 @@ import moment from "moment";//npm install --save moment
 export default {
   data() {
     return {
-      
       selectedDay: null,
       currentDate: null,
       queryResult: [],
@@ -43,6 +42,13 @@ export default {
         "15": false,
         "16": false,
       },
+      attrs: [
+        {
+          key: 'today',
+          dot: true,
+          dates: new Date(),
+        },
+      ],
     };
   },
   name: "reservationMainPage",
@@ -62,7 +68,7 @@ export default {
       "-" +
       day;
       date = date.toString();
-      const mapped_times_keys = Object.keys(this.mapped_times);
+      const mapped_times_keys = Object.keys(this.mapped_times);    
       if (moment(this.selectedDay).isBefore(date) == true) {
         for (let i = 0; i < mapped_times_keys.length; i++) {
           this.mapped_times[mapped_times_keys[i]] = true;
@@ -109,8 +115,19 @@ export default {
         .then((response) => {
           this.queryResult = response.data;
           this.mapReservedTimes();
+          var today = new Date();
+          if (day == moment(today).format('YYYY-MM-DD')) {
+            var hours = today.getHours();
+            const mapped_times_keys = Object.keys(this.mapped_times);
+            for (let i = 0; i < mapped_times_keys.length; i++) {
+              if (parseInt(mapped_times_keys[i]) <= hours) {
+                this.mapped_times[mapped_times_keys[i]] = true;
+              }
+            }
+          }
+          console.log(day);
+          console.log(this.mapped_times);
         });
-
     },
   },
   mounted: function () {
@@ -138,16 +155,17 @@ export default {
     var today = new Date();
     var day = today.getDate();
     var month = today.getMonth() + 1;
-    var year = today.getFullYear();    
+    var year = today.getFullYear();
+    if(month < 10 || day < 10){day = "0" + day.toString();month = "0" + month.toString()} 
     var date =
       year +
       "-" +
       (month) +
       "-" +
-      today.getDate();
+      day;
     date = date.toString();
     this.currentDate = day + " " + months[month] + " " + today.getFullYear() + " " + dayname[today.getDay()];
-    if(month < 10 || day < 10){day = "0" + day.toString();month = "0" + month.toString()}
+    
     var sdate =
     year +
     "-" +

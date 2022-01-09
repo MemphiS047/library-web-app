@@ -33,7 +33,7 @@
         </li>
         <li class="nav-item">
           <router-link to="/traffic">
-            <a class="nav-link" href="#"> Traffic </a>
+            <a class="nav-link" href="#"> Occupancy </a>
           </router-link>
         </li>
       </ul>

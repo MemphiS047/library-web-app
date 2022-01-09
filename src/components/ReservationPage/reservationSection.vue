@@ -220,7 +220,7 @@ export default {
     },
     buttonText(hr) {
       if (this.$props.reservedDates[hr] == true) {
-        return "Reserved!"
+        return "Not Available"
       }
       else {
         return "Reserve";
@@ -235,12 +235,12 @@ export default {
   margin-top: 5px;
 }
 #reserveButton {
-  width: 107px;
+  width: 143px;
   height: 50px;
-  color: white;
+  color: #0d1e63;
   font-size: 20px;
   font-weight: normal;
-  background: #0d1e63;
+  background: white;
   border: 1px solid #0d1e63;
   box-sizing: border-box;
   border-radius: 15px;
@@ -254,6 +254,7 @@ export default {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+  background-color: #0d1e63;
 }
 .reservationSectionTitle {
   margin-top: 20px;
@@ -266,9 +267,10 @@ export default {
   font-weight: normal;
   font-size: 22px;
   line-height: 27px;
-  color: #000000;
+  color: white;
 }
 button[disabled=disabled], button:disabled {
-    background-color: red !important;
+    background-color: gray !important;
+    color: white !important;
 }
 </style>

@@ -4,55 +4,69 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <div class="row">
-              <span class="trafficViewTitle">Library Crowdness</span>
-              <div id="appProgressBar">
-                <label>Kavacik North Campus</label>
-                <div class="progress">
-                  <div
-                    class="progress__fill_lib1"
-                    v-bind:style="{ width: computedWith1 }"
-                  ></div>
-                  <span class="progress__text">{{ lib1_traffic }}%</span>
+            <div class="child">
+              <h1 class="trafficViewTitle">Campus</h1>
+              <div class="column">
+                <div id="campus">
+                  <h5>Kavacik North Campus</h5>
+                </div>
+                <div id="campus">
+                  <h5>Kavacik South Campus</h5>
+                </div>
+                <div id="campus">
+                  <h5>Halic Campus</h5>
                 </div>
               </div>
-              <div id="appProgressBar">
-                <label>Kavacik South Campus</label>
-                <div class="progress">
-                  <div
-                    class="progress__fill_lib2"
-                    v-bind:style="{ width: computedWith2 }"
-                  ></div>
-                  <span class="progress__text">{{ lib2_traffic }}%</span>
+            </div>          
+            <div class="child">
+              <h1 class="trafficViewTitle">Library Crowdness</h1>
+              <div class="column2">
+                <div id="appProgressBar">
+                  <div class="progress">
+                    <div
+                      class="progress__fill_lib1"
+                      v-bind:style="{ width: computedWith1 }"
+                    ></div>
+                    <span class="progress__text">{{ lib1_traffic }}%</span>
+                  </div>
                 </div>
-              </div>
-              <div id="appProgressBar">
-                <label>Halic Campus</label>
-                <div class="progress">
-                  <div
-                    class="progress__fill_lib3"
-                    v-bind:style="{ width: computedWith3 }"
-                  ></div>
-                  <span class="progress__text">{{ lib3_traffic }}%</span>
+                <div id="appProgressBar">
+                  <div class="progress">
+                    <div
+                      class="progress__fill_lib2"
+                      v-bind:style="{ width: computedWith2 }"
+                    ></div>
+                    <span class="progress__text">{{ lib2_traffic }}%</span>
+                  </div>
                 </div>
-              </div>
-              <span class="trafficViewTitle">Computer Availability</span>
-              <div id="appProgressBar">
-                <label>Kavacik North Campus</label>
-                <br>
-                <label> Available computers : {{ comp1 }}</label>
-              </div>
-              <div id="appProgressBar">
-                <label>Kavacik South Campus</label>
-                <br>
-                <label>Available computers : {{ comp2 }}</label>
-              </div>
-              <div id="appProgressBar">
-                <label>Halic Campus</label>
-                <br>
-                <label>Available computers : {{ comp3 }}</label>
+                <div id="appProgressBar">
+                  <div class="progress">
+                    <div
+                      class="progress__fill_lib3"
+                      v-bind:style="{ width: computedWith3 }"
+                    ></div>
+                    <span class="progress__text">{{ lib3_traffic }}%</span>
+                  </div>
+                </div>
               </div>
             </div>
+            <div class="child">
+              <h1 class="trafficViewTitle">Computer Availability</h1>
+              <div class="column">
+                <div id="computerNumber">   
+                <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Circle-icons-computer.svg" alt="computerIcon">
+                  <label> {{ comp1 }}</label>
+                </div>
+                <div id="computerNumber">
+                <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Circle-icons-computer.svg" alt="computerIcon">
+                  <label> {{ comp2 }}</label>
+                </div>
+                <div id="computerNumber">
+                <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Circle-icons-computer.svg" alt="computerIcon">
+                  <label> {{ comp3 }}</label>
+                </div>
+              </div>
+            </div>            
           </div>
         </div>
       </div>
@@ -119,9 +133,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #appProgressBar {
-  margin-top: 50px;
+  margin-top: 65px;
+}
+#computerNumber {
+  margin-top: 70px;
+  text-align: center;
+}
+#campus {
+  margin-top: 70px;
+  color: #0d1e63;
+  text-align: center;
 }
 .trafficViewPage {
   width: 100%;
@@ -133,16 +156,14 @@ export default {
   border-radius: 10px;
 }
 .trafficViewTitle {
-  margin-top: 20px;
-  width: auto !important;
-  height: 27px;
-  top: 39px;
+  margin-bottom: 50px;
+  /* position: fixed; */
+  text-align: center;
   padding: auto;
   font-family: Manjari;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
-  line-height: 27px;
   color: #000000;
 }
 .progress {
@@ -176,11 +197,34 @@ export default {
 }
 
 .progress__text {
-  position: absolute;
+  position: relative;
   top: 70%;
   right: 5px;
+  /* width: 100px; */
   transform: translateY(-50%);
   font: bold 14px "Quicksand", sans-serif;
-  color: #ffffff;
+  color: black;
+}
+.col {
+  display: flex;
+}
+.child {
+  flex: 1;
+  padding: auto;
+  margin: auto;
+  justify-content: space-evenly;
+}
+.row {
+  margin-top: 20px;
+  /* background-color: #0d1e6 */;
+}
+.image {
+  height: 25px;
+  weight: 25px;
+}
+.column2 {
+/*   justify-content: center;
+  text-align: center; */
+  margin-left: 35px;
 }
 </style>

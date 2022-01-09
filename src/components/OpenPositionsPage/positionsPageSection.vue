@@ -234,6 +234,8 @@ h5 {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+  background-color: #0d1e63;
+  color: white;
 }
 .resourceAuthor {
   width: 419px;
@@ -250,6 +252,7 @@ h5 {
 }
 
 .openPositionTitle {
+  color: white !important;
   margin-top: 20px;
   width: auto !important;
   height: 27px;
