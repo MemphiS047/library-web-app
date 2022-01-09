@@ -75,6 +75,7 @@
                 >
                   Submit
                 </button>
+                <label class="returnMessageStyle">{{ returnMessage }}</label>
               </div>
             </div>
           </div>
@@ -85,7 +86,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "adminAddBook",
   data() {
@@ -95,12 +96,13 @@ export default {
       bookPublisher: "",
       bookLanguage: "",
       bookNumPages: "",
+      returnMessage: "",
     };
   },
   methods: {
     submitForm() {
       axios
-        .post("http://127.0.0.1:5000/api/managebooks", {
+        .post("http://192.168.0.24:5000/api/managebooks", {
           book_name: this.bookName,
           author: this.bookAuthor,
           Publisher: this.bookPublisher,
@@ -109,6 +111,7 @@ export default {
         })
         .then((res) => {
           console.log(res.data["message"]);
+          this.returnMessage = res.data["message"];
         })
         .catch((error) => {
           console.log(error);
@@ -119,6 +122,11 @@ export default {
 </script>
 
 <style>
+.returnMessageStyle {
+  color: #28a745;
+  font-weight: bold;
+  font-size: 17px;
+}
 .adminPanelInput {
   text-indent: 15px;
   width: 200px !important;

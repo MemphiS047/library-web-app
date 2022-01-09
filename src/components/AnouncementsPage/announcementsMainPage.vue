@@ -30,7 +30,7 @@ export default {
     };
   },
   mounted: function () {
-    axios.get("http://127.0.0.1:5000/api/manageannouncements").then((response) => {
+    axios.get("http://192.168.0.24:5000/api/manageannouncements").then((response) => {
       const result = JSON.parse(JSON.stringify(response.data));
       console.log(result["queryLst"][0]);
       result["queryLst"].forEach((element) => {

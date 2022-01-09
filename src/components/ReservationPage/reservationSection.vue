@@ -14,7 +14,7 @@
               @click="reserveRoom('09')"
               :disabled="reservedDates['09']"
             >
-              {{ buttonText('09') }}
+              {{ buttonText("09") }}
             </button>
           </div>
         </div>
@@ -36,7 +36,7 @@
               @click="reserveRoom('10')"
               :disabled="reservedDates['10']"
             >
-              {{ buttonText('10') }}
+              {{ buttonText("10") }}
             </button>
           </div>
         </div>
@@ -58,7 +58,7 @@
               @click="reserveRoom('11')"
               :disabled="reservedDates['11']"
             >
-              {{ buttonText('11') }}
+              {{ buttonText("11") }}
             </button>
           </div>
         </div>
@@ -80,7 +80,7 @@
               @click="reserveRoom('12')"
               :disabled="reservedDates['12']"
             >
-              {{ buttonText('12') }}
+              {{ buttonText("12") }}
             </button>
           </div>
         </div>
@@ -102,7 +102,7 @@
               @click="reserveRoom('13')"
               :disabled="reservedDates['13']"
             >
-              {{ buttonText('13') }}
+              {{ buttonText("13") }}
             </button>
           </div>
         </div>
@@ -124,7 +124,7 @@
               @click="reserveRoom('14')"
               :disabled="reservedDates['14']"
             >
-              {{ buttonText('14') }}
+              {{ buttonText("14") }}
             </button>
           </div>
         </div>
@@ -146,7 +146,7 @@
               @click="reserveRoom('15')"
               :disabled="reservedDates['15']"
             >
-              {{ buttonText('15') }}
+              {{ buttonText("15") }}
             </button>
           </div>
         </div>
@@ -168,7 +168,7 @@
               @click="reserveRoom('16')"
               :disabled="reservedDates['16']"
             >
-              {{ buttonText('16') }}
+              {{ buttonText("16") }}
             </button>
           </div>
         </div>
@@ -199,11 +199,11 @@ export default {
     reserveRoom(hour) {
       this.err_messages["err_room_full"] = "";
       axios
-        .post("http://127.0.0.1:5000/api/managereserveroom", {
+        .post("http://192.168.0.24:5000/api/managereserveroom", {
           room_id: 1,
           reservedBy: this.$store.state.userid,
           length: 1,
-          start_time: `${this.$props.date} ${hour}`
+          start_time: `${this.$props.date} ${hour}`,
         })
         .then((res) => {
           if (res.data["message"] == "Room reserved successfully") {
@@ -220,17 +220,16 @@ export default {
     },
     buttonText(hr) {
       if (this.$props.reservedDates[hr] == true) {
-        return "Reserved!"
-      }
-      else {
+        return "Reserved!";
+      } else {
         return "Reserve";
       }
-    }
+    },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .resourceSectionFlex {
   margin-top: 5px;
 }
@@ -268,7 +267,12 @@ export default {
   line-height: 27px;
   color: #000000;
 }
-button[disabled=disabled], button:disabled {
-    background-color: red !important;
+button[disabled="disabled"],
+button:disabled {
+  background-color: red !important;
 }
+/* button:active {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset !important,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset !important;
+} */
 </style>

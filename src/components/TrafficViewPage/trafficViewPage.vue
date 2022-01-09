@@ -5,13 +5,16 @@
         <div class="row">
           <div class="col">
             <div class="row">
-              <span class="trafficViewTitle">Library Crowdness</span>
+              <h4 class="trafficViewTitle">Library Crowdness</h4>
               <div id="appProgressBar">
                 <label>Kavacik North Campus</label>
                 <div class="progress">
                   <div
                     class="progress__fill_lib1"
-                    v-bind:style="{ width: computedWith1 }"
+                    v-bind:style="{
+                      width: computedWith1,
+                      background: barColor1,
+                    }"
                   ></div>
                   <span class="progress__text">{{ lib1_traffic }}%</span>
                 </div>
@@ -21,7 +24,10 @@
                 <div class="progress">
                   <div
                     class="progress__fill_lib2"
-                    v-bind:style="{ width: computedWith2 }"
+                    v-bind:style="{
+                      width: computedWith2,
+                      background: barColor2,
+                    }"
                   ></div>
                   <span class="progress__text">{{ lib2_traffic }}%</span>
                 </div>
@@ -31,7 +37,10 @@
                 <div class="progress">
                   <div
                     class="progress__fill_lib3"
-                    v-bind:style="{ width: computedWith3 }"
+                    v-bind:style="{
+                      width: computedWith3,
+                      background: barColor3,
+                    }"
                   ></div>
                   <span class="progress__text">{{ lib3_traffic }}%</span>
                 </div>
@@ -39,17 +48,17 @@
               <span class="trafficViewTitle">Computer Availability</span>
               <div id="appProgressBar">
                 <label>Kavacik North Campus</label>
-                <br>
+                <br />
                 <label> Available computers : {{ comp1 }}</label>
               </div>
               <div id="appProgressBar">
                 <label>Kavacik South Campus</label>
-                <br>
+                <br />
                 <label>Available computers : {{ comp2 }}</label>
               </div>
               <div id="appProgressBar">
                 <label>Halic Campus</label>
-                <br>
+                <br />
                 <label>Available computers : {{ comp3 }}</label>
               </div>
             </div>
@@ -74,6 +83,9 @@ export default {
       comp1: 0,
       comp2: 0,
       comp3: 0,
+      barColor1: "",
+      barColor2: "",
+      barColor3: "",
     };
   },
   computed: {
@@ -85,6 +97,10 @@ export default {
     },
     computedWith3: function () {
       return this.width3;
+    },
+    changeBarColor: function () {
+      this.calculateStyleChange();
+      return this.barColor;
     },
   },
   methods: {
@@ -100,7 +116,7 @@ export default {
   },
   mounted: function () {
     console.log("DENEME");
-    axios.get("http://127.0.0.1:5000/api/traffic").then((response) => {
+    axios.get("http://192.168.0.24:5000/api/traffic").then((response) => {
       console.log(response.data);
       this.lib1_traffic = response.data["lib1_traffic"];
       this.lib2_traffic = response.data["lib2_traffic"];
@@ -108,8 +124,30 @@ export default {
       this.changeWidth1(this.lib1_traffic);
       this.changeWidth2(this.lib2_traffic);
       this.changeWidth3(this.lib3_traffic);
+      if (this.lib1_traffic > 0 && this.lib1_traffic < 30) {
+        this.barColor1 = "#33cc33";
+      } else if (this.lib1_traffic > 31 && this.lib1_traffic < 70) {
+        this.barColor1 = "#ffcc00";
+      } else {
+        this.barColor1 = "#990000";
+      }
+      if (this.lib2_traffic > 0 && this.lib2_traffic < 30) {
+        this.barColor2 = "#33cc33";
+      } else if (this.lib2_traffic > 31 && this.lib2_traffic < 70) {
+        this.barColor2 = "#ffcc00";
+      } else {
+        this.barColor2 = "#990000";
+      }
+
+      if (this.lib3_traffic > 0 && this.lib3_traffic < 30) {
+        this.barColor3 = "#33cc33";
+      } else if (this.lib3_traffic > 31 && this.lib3_traffic < 70) {
+        this.barColor3 = "#ffcc00";
+      } else {
+        this.barColor3 = "#990000";
+      }
     });
-    axios.get("http://127.0.0.1:5000/api/trafficComp").then((response) => {
+    axios.get("http://192.168.0.24:5000/api/trafficComp").then((response) => {
       console.log(response.data);
       this.comp1 = response.data["comp1_available"];
       this.comp2 = response.data["comp2_available"];
@@ -119,9 +157,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #appProgressBar {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .trafficViewPage {
   width: 100%;
@@ -159,19 +197,19 @@ export default {
 .progress__fill_lib1 {
   /* width: 0%; */
   height: 100%;
-  background: #009579;
+  /* background: #009579; */
   transition: all 0.2s;
 }
 .progress__fill_lib2 {
   /* width: 0%; */
   height: 100%;
-  background: #009579;
+  /* background: #009579; */
   transition: all 0.2s;
 }
 .progress__fill_lib3 {
   /* width: 0%; */
   height: 100%;
-  background: #009579;
+  /* background: #70000a; */
   transition: all 0.2s;
 }
 

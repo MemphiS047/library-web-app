@@ -64,6 +64,7 @@
                 >
                   Submit
                 </button>
+                <label class="returnMessageStyle">{{ returnMessage }}</label>
               </div>
             </div>
           </div>
@@ -74,7 +75,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "adminAddBook",
   data() {
@@ -82,20 +83,22 @@ export default {
       jobTitle: "",
       jobDescription: "",
       payment: "",
-      jobType: ""
+      jobType: "",
+      returnMessage: "",
     };
   },
   methods: {
     submitForm() {
       axios
-        .post("http://127.0.0.1:5000/api/managepositions", {
+        .post("http://192.168.0.24:5000/api/managepositions", {
           job_title: this.jobTitle,
           Job_description: this.jobDescription,
           payment: this.payment,
-          job_type: this.jobType
+          job_type: this.jobType,
         })
         .then((res) => {
           console.log(res.data["message"]);
+          this.returnMessage = res.data["message"];
         })
         .catch((error) => {
           console.log(error);

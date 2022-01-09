@@ -12,7 +12,14 @@
         </div>
         <div class="col">
           <div class="d-flex flex-row-reverse bd-hghlight resourceSectionFlex">
-            <button v-if="$store.state.is_authenticated" :disabled="isActive" id="borrowButton" @click="borrow">Borrow</button>
+            <button
+              v-if="$store.state.is_authenticated"
+              :disabled="isActive"
+              id="borrowButton"
+              @click="borrow"
+            >
+              {{ borrowButtonLable }}
+            </button>
           </div>
         </div>
       </div>
@@ -35,13 +42,14 @@ export default {
         user_id: this.$store.state.userid,
         is_returned: 0,
       },
+      borrowButtonLable: "Borrow",
     };
   },
   methods: {
     borrow() {
       console.log(this.borrow_req);
       axios
-        .post("http://127.0.0.1:5000/api/borrow", {
+        .post("http://192.168.0.24:5000/api/borrow", {
           book_id: this.borrow_req.book_id,
           reserv_datetime: this.borrow_req.reserv_datetime,
           duration: this.borrow_req.duration,
@@ -51,6 +59,7 @@ export default {
         .then((res) => {
           console.log(res);
           this.isActive = true;
+          this.borrowButtonLable = "Borrowed";
         })
         .catch((error) => {
           console.log(error);
@@ -61,6 +70,19 @@ export default {
 </script>
 
 <style>
+.borrowedButtonStyle {
+  width: 107px;
+  height: 50px;
+  color: #0d1e63;
+  font-size: 20px;
+  font-weight: normal;
+
+  background: rgb(71, 71, 71);
+  border: 1px solid #464646;
+  box-sizing: border-box;
+  border-radius: 15px;
+  border-style: solid;
+}
 .resourceSectionFlex {
   margin-top: 5px;
 }

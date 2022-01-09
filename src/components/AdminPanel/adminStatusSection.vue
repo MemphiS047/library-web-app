@@ -67,7 +67,7 @@ export default {
     },
     getBorrowStatus() {
       axios
-        .get("http://127.0.0.1:5000/api/borrow", {
+        .get("http://192.168.0.24:5000/api/borrow", {
           params: { search_string: this.searchString },
         })
         .then((response) => {
@@ -100,20 +100,6 @@ export default {
   border: 1px solid #000000 !important;
   box-sizing: border-box !important;
   border-radius: 10px !important;
-}
-.defaultBtn {
-  width: 107px;
-  height: 50px;
-  background-color: #0d1e63 !important;
-  color: #ffff;
-  font-size: 20px;
-  font-weight: normal;
-
-  background: #ffff;
-  border: 1px solid #0d1e63;
-  box-sizing: border-box;
-  border-radius: 15px;
-  border-style: solid;
 }
 
 .appliedBtn {
