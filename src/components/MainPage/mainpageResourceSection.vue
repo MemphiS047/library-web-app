@@ -10,7 +10,9 @@
             <p class="resourceSnippet">{{ snippet }}</p>
           </div>
           <div>
-            <label class="linkArticle"><a href="{{link}}">link</a></label>
+            <label class="linkArticle"
+              ><a class="aLinkHref" href="{{link}}">Link</a></label
+            >
           </div>
         </div>
       </div>
@@ -30,13 +32,16 @@ export default {
 </script>
 
 <style scoped>
-.linkArticle{
+.aLinkHref {
+  color: yellow;
+}
+.linkArticle {
   font-size: 15px;
 }
-.container{
+.container {
   height: 100%;
 }
-.snippetRow{
+.snippetRow {
   position: relative;
   width: 100% !important;
 }
@@ -64,20 +69,12 @@ export default {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+  border-color: white !important;
+  background: #101c26;
 }
-/* .resourceSnippet {
-  width: 419px;
-  height: 27px;
-  left: 27px;
-  top: 39px;
-  padding: 0px 10px 0px 10px;
-  font-family: Manjari;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 27px;
-  color: #000000;
-} */
+.resourceSnippet {
+  color: white !important;
+}
 
 .resourceTitle {
   width: 100%;
@@ -90,7 +87,7 @@ export default {
   font-weight: normal;
   font-size: 22px;
   line-height: 27px;
-  color: #000000;
+  color: white !important;
 }
 button[disabled=""],
 button:disabled {
@@ -99,7 +96,7 @@ button:disabled {
 button:disabled {
   background-color: red !important;
 }
-p{
+p {
   left: 69px !important;
 }
 </style>

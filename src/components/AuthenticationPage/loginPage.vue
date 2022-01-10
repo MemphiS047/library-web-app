@@ -129,6 +129,9 @@ export default {
 </script>
 
 <style scoped>
+label{
+  color: white;
+}
 body{
   color: white;
 }
