@@ -6,13 +6,12 @@
     <div id="announcementsID" class="container">
       <div class="row announcementsRow"></div>
       <div class="row announcementsRow">
-        <resourceSection
-          v-for="result in queryResult"
-          :key="result.bookId"
-          :bookId="result.bookId"
-          :bookName="result.bookName"
-          :authorName="result.authorName"
-          :isAvailable="result.is_available"
+        <mainpageResourceSection
+          v-for="result in searchResults"
+          :key="result.position"
+          :title="result.title"
+          :link="result.link"
+          :snippet="result.snippet"
         />
       </div>
     </div>
@@ -20,37 +19,23 @@
 </template>
 
 <script>
-import resourceSection from "./../DatabasePage/resourceSection.vue";
-import axios from "axios";
+import mainpageResourceSection from "./mainpageResourceSection.vue";
 export default {
   name: "databasePage",
   components: {
-    resourceSection,
+    mainpageResourceSection,
   },
-  props: ["queryResults"],
+  props: ["searchResults"],
   data() {
     return {
       searchString: "",
       queryResult: [],
     };
   },
-  methods: {
-    submitForm() {
-      this.queryResult = [];
-      this.getResults();
-    },
-    getResults() {
-      axios
-        .get("http://192.168.0.24:5000/api/managebooks", {
-          params: { search_string: this.searchString },
-        })
-        .then((response) => {
-          this.queryResult = response.data["queryLst"];
-          console.log("QUERY RESULT FOR SEARCH $$");
-          console.log(this.queryResult);
-        });
-    },
-  },
+  mounted : function(){
+      console.log("DENEME")
+      console.log(this.$props.searchResults);
+  }
 };
 </script>
 

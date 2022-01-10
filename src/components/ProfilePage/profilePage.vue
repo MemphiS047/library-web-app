@@ -32,7 +32,7 @@
               :userId="result.userId"
               :isReturned="result.isReturned"
               :firstName="result.firstName"
-              :bookName="result.bookName"
+              :bookName="result.bookname"
               :author="result.author"
             />
           </div>
@@ -40,39 +40,6 @@
         <div class="col-3"></div>
       </div>
     </div>
-
-    <!-- <div class="container">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-10 profilePageCol">
-          <div class="profilePageTitles">
-            <span>Reservations</span>
-            <hr>
-          </div>
-          <div class="row">
-            <profilePageReservationSection />
-          </div>
-        </div>
-        <div class="col-3"></div>
-      </div>
-    </div>
-
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-10 profilePageCol">
-          <div class="profilePageTitles">
-            <span>Favorites</span>
-            <hr>
-          </div>
-          <div class="row">
-            <profilePageFavoriteSectionVue />
-          </div>
-        </div>
-        <div class="col-3"></div>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -93,40 +60,32 @@ export default {
   data() {
     return {
       queryResult: [],
-      is_borrowed: false
+      is_borrowed: false,
     };
   },
   mounted: function () {
+    var username = this.format_username();
+    console.log(username);
     axios
       .get("http://192.168.0.24:5000/api/borrow", {
-        params: { search_string: this.$store.state.userid },
+        params: { search_string: username },
       })
       .then((response) => {
-        const result = JSON.parse(JSON.stringify(response.data));
-        result["queryLst"].forEach((element) => {
-          this.queryResult.push({
-            bookId: element.book_id,
-            reservDatetime: element.reserv_datetime,
-            duration: element.duration,
-            userId: element.user_id,
-            isReturned: element.is_returned,
-            firstName: element.firstname,
-            bookName: element.bookname,
-            reservationId: element.reservation_id,
-            author: element.author
-          });
-        });
-        console.log(this.queryResult["bookId"]);
-        if(this.queryResult["bookId"] == undefined) {
-          this.is_borrowed = true
-        }
+        this.queryResult = response.data["queryLst"];
+        console.log(this.queryResult);
       });
   },
+  methods : { 
+    format_username(){
+      var username = this.$store.state.username;
+      return username.split("@")[0];
+    }
+  }
 };
 </script>
 
 <style>
-.noBorrowWarning{
+.noBorrowWarning {
   color: black;
   font-size: 20px;
   font-weight: bold;

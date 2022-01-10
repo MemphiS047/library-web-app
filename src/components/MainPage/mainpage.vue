@@ -26,7 +26,30 @@
             </div>
           </div>
           <div>
-            <searchsectionFormVue @searchstring="getValue" />
+            <div class="d-flex flex-row bd-highlight mb-3 searchFormFlex">
+              <div id="searchInputflex" class="p-2 bd-highlight">
+                <form @submit.prevent="formSubmitButton">
+                  <div class="form-group">
+                    <input
+                      v-model="searchString"
+                      class="form-control searchFormInput"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter what you want to search"
+                    />
+                  </div>
+                </form>
+              </div>
+              <div class="p-2 bd-highlight">
+                <button
+                  id="searchButtonMainPage"
+                  class="btn btn-primary"
+                  @click="formSubmitButton"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
           </div>
           <div class="searchSectionNavigationDiv">
             <a class="searchNavigationElement">Article & Publishers</a>
@@ -38,39 +61,65 @@
         <mainpageAnnouncements />
       </div>
       <div v-if="isSearched">
-        <mainpageResults :queryResults="queryResults"/>
+        <div>
+          <div class="announcementsTitleDiv">
+            <span>Search Results</span>
+          </div>
+          <div id="announcementsID" class="container">
+            <div class="row announcementsRow"></div>
+            <div class="row announcementsRow">
+              <mainpageResourceSection
+                v-for="result in queryResult"
+                :key="result.position"
+                :title="result.title"
+                :link="result.link"
+                :snippet="result.snippet"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import mainpageAnnouncements from "./mainpageAnnouncements.vue";
-import searchsectionFormVue from "./searchsectionForm.vue";
-import mainpageResults from "./mainpageResults.vue";
+import mainpageResourceSection from "./mainpageResourceSection.vue";
+import axios from "axios";
+
 export default {
   name: "mainpage",
   components: {
     mainpageAnnouncements,
-    searchsectionFormVue,
-    mainpageResults,
+    mainpageResourceSection,
   },
   data() {
     return {
       searchString: "",
       isSearched: false,
+      queryResult: [],
     };
   },
   methods: {
-    getValue(event) {
-      console.log("Value recieved from child component " + event);
-      this.searchString = event;
+    formSubmitButton() {
       this.isSearched = true;
+      console.log(this.searchString);
+      axios
+        .get("http://192.168.0.24:5000/api/googlescholar", {
+          params: {
+            searchString: this.searchString,
+          },
+        })
+        .then((response) => {
+          this.queryResult = response.data["queryLst"];
+          console.log(this.queryResult);
+        });
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 html {
   background-color: #f0f0f0 !important;
 }
@@ -163,5 +212,130 @@ p {
   left: 70px;
   top: 98px;
   margin-top: 20px;
+}
+/* SEARCH SECTION FORM */
+.searchFormFlex {
+  margin-top: 120px;
+  margin-left: 30px;
+  height: 90px;
+}
+
+.searchFormInput {
+  text-indent: 15px;
+  width: 720px !important;
+  height: 50px;
+  top: 60px;
+  border: 1px solid #000000 !important;
+  box-sizing: border-box !important;
+  border-radius: 10px !important;
+}
+
+/* 
+Tied to flex item inside the flex box, 
+it enables search button to get close to the
+form input 
+*/
+#searchInputflex {
+  width: 750px !important;
+}
+#searchButtonMainPage {
+  margin-top: 40px;
+  width: 107px;
+  height: 50px;
+  left: 957px;
+  top: 60px;
+  padding-top: 15px;
+  background: #ffffff;
+  border: 1px solid #0d1e63;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-family: Manjari;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 22px;
+  color: #0d1e63;
+}
+
+#searchButton:hover {
+  background: #0d1e63;
+  border: 1px solid #0d1e63;
+  color: #ffffff;
+}
+/* MAIN PAGE SEARCH RESULTS SECTION STYLING */
+.announcementsTitleDiv {
+  margin-top: 120px;
+  margin-left: 10px;
+  width: 406px;
+  height: 50px;
+  left: 97px;
+  top: 178px;
+}
+.announcementsRow {
+  padding: 15px;
+}
+#announcementsID {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  position: relative;
+  width: 1337px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding-bottom: 35px;
+}
+.searchSectionDBFlex {
+  height: 70px;
+}
+#searchButtonDatabasePage {
+  position: absolute;
+  width: 107px;
+  height: 50px;
+  left: 573px;
+  top: 110px;
+  color: #0d1e63;
+  font-size: 20px;
+  font-weight: normal;
+  background: #ffff;
+  border: 1px solid #0d1e63;
+  box-sizing: border-box;
+  border-radius: 15px;
+  border-style: solid;
+}
+
+.databaseSearchingInput {
+  position: absolute;
+  width: 499px;
+  height: 50px;
+  left: 57px;
+  top: 110px;
+  padding: 5px 25px 5px 25px;
+  border: 1px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  border-color: black;
+  border-style: solid;
+}
+.searchSectionDiv {
+  width: 100%;
+  height: 180px;
+  padding: 30px;
+  margin-top: 20px !important;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.searchSectionDBTitle {
+  width: 419px;
+  height: 27px;
+  left: 27px;
+  top: 39px;
+  padding: 0px 10px 0px 10px;
+  font-family: Manjari;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 27px;
+  color: #000000;
 }
 </style>
