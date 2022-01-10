@@ -40,39 +40,6 @@
         <div class="col-3"></div>
       </div>
     </div>
-
-    <!-- <div class="container">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-10 profilePageCol">
-          <div class="profilePageTitles">
-            <span>Reservations</span>
-            <hr>
-          </div>
-          <div class="row">
-            <profilePageReservationSection />
-          </div>
-        </div>
-        <div class="col-3"></div>
-      </div>
-    </div>
-
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-10 profilePageCol">
-          <div class="profilePageTitles">
-            <span>Favorites</span>
-            <hr>
-          </div>
-          <div class="row">
-            <profilePageFavoriteSectionVue />
-          </div>
-        </div>
-        <div class="col-3"></div>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -80,15 +47,11 @@
 import profilePageBanner from "./profilepageBanner.vue";
 import profilePageItemSection from "./profilepageItemSection.vue";
 import axios from "axios";
-// import profilePageReservationSection from "./profilePageReservationSection.vue";
-// import profilePageFavoriteSectionVue from "./profilePageFavoriteSection.vue";
 export default {
   name: "profilePage",
   components: {
     profilePageBanner,
     profilePageItemSection,
-    // profilePageReservationSection,
-    // profilePageFavoriteSectionVue,
   },
   data() {
     return {
@@ -98,7 +61,7 @@ export default {
   },
   mounted: function () {
     axios
-      .get("http://192.168.0.24:5000/api/borrow", {
+      .get("http://127.0.0.1:5000/api/borrow", {
         params: { search_string: this.$store.state.userid },
       })
       .then((response) => {
@@ -127,7 +90,7 @@ export default {
 
 <style>
 .noBorrowWarning{
-  color: black;
+  color: white;
   font-size: 20px;
   font-weight: bold;
 }
@@ -159,7 +122,7 @@ hr {
   font-weight: normal;
   font-size: 45px;
   line-height: 33px;
-  color: #000000;
+  color: white;
 }
 
 .profilePageCol {
@@ -172,8 +135,8 @@ hr {
   height: 400px;
   margin: 0 auto;
   margin-top: 120px;
-  background-color: rgba(255, 255, 255, 0.425);
-  border: 1px solid #000000;
+  background-color: #0d1e63;
+  border: 1px solid white;
   box-sizing: border-box;
   border-radius: 10px;
 }

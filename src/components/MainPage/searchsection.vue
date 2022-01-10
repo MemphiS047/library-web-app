@@ -58,7 +58,7 @@ export default {
   font-weight: normal;
   font-size: 17px;
   line-height: 22px;
-  color: #0d1e63;
+  color: white;
   text-decoration: none;
 }
 .searchSectionNavigationLinks {
@@ -81,10 +81,11 @@ export default {
   height: 300px;
   margin: 0 auto;
   margin-top: 150px;
-  background: #ffffff;
+  background: #0d1e63;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+
 }
 
 .searchBoxTitle {
@@ -98,7 +99,7 @@ export default {
   font-weight: normal;
   font-size: 25px;
   line-height: 33px;
-  color: #000000;
+  color: white;
 }
 
 .warningBox {
@@ -107,7 +108,7 @@ export default {
   height: 83px;
   left: 56px;
   top: 74px;
-  background: rgba(255, 204, 0, 0.3);
+  background: #FFCC00;
   border-radius: 20px;
 }
 
@@ -122,7 +123,7 @@ p {
   font-weight: normal;
   font-size: 15px;
   line-height: 16px;
-  color: #000000;
+  color: black;
 }
 
 .infoIcon {

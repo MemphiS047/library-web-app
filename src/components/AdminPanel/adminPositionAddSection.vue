@@ -82,7 +82,7 @@ export default {
   methods: {
     submitForm() {
       axios
-        .post("http://192.168.0.24:5000/api/managepositions", {
+        .post("http://127.0.0.1:5000/api/managepositions", {
           job_title: this.jobTitle,
           Job_description: this.jobDescription,
           payment: this.payment,
@@ -113,8 +113,8 @@ export default {
 .defaultBtn {
   width: 107px;
   height: 50px;
-  background-color: #0d1e63 !important;
-  color: #ffff;
+  background-color: white !important;
+  color: #0d1e63;
   font-size: 20px;
   font-weight: normal;
 

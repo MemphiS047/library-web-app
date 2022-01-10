@@ -30,7 +30,7 @@ export default {
     };
   },
   mounted: function () {
-    axios.get("http://192.168.0.24:5000/api/manageannouncements").then((response) => {
+    axios.get("http://127.0.0.1:5000/api/manageannouncements").then((response) => {
       this.queryResult = response.data["queryLst"];
     });
   },
@@ -60,5 +60,6 @@ export default {
   box-sizing: border-box;
   border-radius: 10px;
   padding-bottom: 35px;
+  background: #0d1e63;
 }
 </style>

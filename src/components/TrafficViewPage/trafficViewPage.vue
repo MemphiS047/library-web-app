@@ -173,7 +173,7 @@ export default {
   },
   mounted: function () {
     console.log("DENEME");
-    axios.get("http://192.168.0.24:5000/api/traffic").then((response) => {
+    axios.get("http://127.0.0.1:5000/api/traffic").then((response) => {
       console.log(response.data);
       this.lib1_traffic = response.data["lib1_traffic"];
       this.lib2_traffic = response.data["lib2_traffic"];
@@ -185,7 +185,7 @@ export default {
       this.changeColor2();
       this.changeColor3();
     });
-    axios.get("http://192.168.0.24:5000/api/trafficComp").then((response) => {
+    axios.get("http://127.0.0.1:5000/api/trafficComp").then((response) => {
       console.log(response.data);
       this.comp1 = response.data["comp1_available"];
       this.comp2 = response.data["comp2_available"];
@@ -198,14 +198,17 @@ export default {
 <style scoped>
 #appProgressBar {
   margin-top: 65px;
+  text-align: center;
 }
 #computerNumber {
-  margin-top: 70px;
+  margin-top: 45px;
   text-align: center;
+  color: white;
+  font-size:20px;
 }
 #campus {
   margin-top: 70px;
-  color: #0d1e63;
+  color: white;
   text-align: center;
 }
 .trafficViewPage {
@@ -216,6 +219,7 @@ export default {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+  background: #0d1e63;
 }
 .trafficViewTitle {
   margin-bottom: 50px;
@@ -226,18 +230,19 @@ export default {
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
-  color: #000000;
+  color: white;
 }
 .progress {
   position: relative;
   width: 210px;
   height: 30px;
-  background: transparent;
+  background: white;
   border-radius: 5px;
   overflow: hidden;
   border: solid black;
   border-width: 1px;
 }
+
 .progress__fill_lib1 {
   /* width: 0%; */
   height: 100%;
@@ -256,6 +261,7 @@ export default {
   background: #009579;
   transition: all 0.2s;
 }
+
 .col {
   display: flex;
 }
@@ -267,14 +273,15 @@ export default {
 }
 .row {
   margin-top: 20px;
-  /* background-color: #0d1e6 */
+  /* background-color: #0d1e6 */;
 }
 .image {
-  height: 25px;
+  height: 50px;
+  weight: 50px;
 }
 .column2 {
-  /*   justify-content: center;
+/*   justify-content: center;
   text-align: center; */
-  margin-left: 35px;
+  margin-left: 95px;
 }
 </style>

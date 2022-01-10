@@ -109,7 +109,7 @@ export default {
         "16": false,
       };
       axios
-        .get("http://192.168.0.24:5000/api/managereserveroom", {
+        .get("http://127.0.0.1:5000/api/managereserveroom", {
           params: { selectDay: day },
         })
         .then((response) => {
@@ -164,7 +164,7 @@ export default {
       "-" +
       day;
     date = date.toString();
-    this.currentDate = day + " " + months[month] + " " + today.getFullYear() + " " + dayname[today.getDay()];
+    this.currentDate = parseInt(day) + " " + months[parseInt(month)] + " " + today.getFullYear() + " " + dayname[today.getDay()];
     
     var sdate =
     year +

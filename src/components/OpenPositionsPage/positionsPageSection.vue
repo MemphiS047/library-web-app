@@ -21,7 +21,7 @@
         <div class="col">
           <div class="row">
             <div class="d-flex justify-content-end">
-              <span class="openPositionTitle">North Campus</span>
+              <span class="openPositionTitle">Job ID: {{this.$props.jobId}}</span>
             </div>
           </div>
           <div class="row openPositionButtonCol">

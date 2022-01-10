@@ -138,7 +138,7 @@ export default {
 
     registerUser() {
       axios
-        .post("http://192.168.0.24:5000/api/register", {
+        .post("http://127.0.0.1:5000/api/register", {
           firstname: this.user.firstname,
           lastname: this.user.lastname,
           faculty: this.user.faculty,
@@ -175,6 +175,7 @@ export default {
 .submitFormDiv {
   margin-top: 150px;
   border: 5px solid #f1f1f1;
+  background: #0d1e63;
 }
 input[type="text"],
 input[type="password"] {
@@ -186,8 +187,8 @@ input[type="password"] {
   box-sizing: border-box;
 }
 button {
-  background-color: #8ebf42;
-  color: white;
+  background-color: white;
+  color: #0d1e63;
   padding: 14px 0;
   margin: 10px 0;
   border: none;
@@ -200,11 +201,16 @@ h1 {
 }
 button:hover {
   opacity: 0.8;
+  background: #FFCC00;
+  color: black;
 }
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
     float: none;
   }
+}
+.form-group {
+  color: white;
 }
 </style>

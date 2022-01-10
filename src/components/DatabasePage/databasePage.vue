@@ -60,7 +60,7 @@ export default {
     },
     getResults() {
       axios
-        .get("http://192.168.0.24:5000/api/managebooks", {
+        .get("http://127.0.0.1:5000/api/managebooks", {
           params: { search_string: this.searchString },
         })
         .then((response) => {
@@ -132,7 +132,7 @@ export default {
   height: 180px;
   padding: 30px;
   margin-top: 20px !important;
-  border: 1px solid #000000;
+  border: 1px solid white;
   box-sizing: border-box;
   border-radius: 10px;
 }
@@ -147,6 +147,6 @@ export default {
   font-weight: normal;
   font-size: 25px;
   line-height: 27px;
-  color: #000000;
+  color: white;
 }
 </style>
