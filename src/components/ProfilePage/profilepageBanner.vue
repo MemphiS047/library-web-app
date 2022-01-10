@@ -27,6 +27,7 @@ export default {
   background-color: transparent !important;
   font-family: "Manjari";
   padding: 10px 10px 10px 55px !important;
+  color: white !important;
 }
 .profilePageSection {
   position: relative;

@@ -47,15 +47,11 @@
 import profilePageBanner from "./profilepageBanner.vue";
 import profilePageItemSection from "./profilepageItemSection.vue";
 import axios from "axios";
-// import profilePageReservationSection from "./profilePageReservationSection.vue";
-// import profilePageFavoriteSectionVue from "./profilePageFavoriteSection.vue";
 export default {
   name: "profilePage",
   components: {
     profilePageBanner,
     profilePageItemSection,
-    // profilePageReservationSection,
-    // profilePageFavoriteSectionVue,
   },
   data() {
     return {
@@ -85,8 +81,8 @@ export default {
 </script>
 
 <style>
-.noBorrowWarning {
-  color: black;
+.noBorrowWarning{
+  color: white;
   font-size: 20px;
   font-weight: bold;
 }
@@ -118,7 +114,7 @@ hr {
   font-weight: normal;
   font-size: 45px;
   line-height: 33px;
-  color: #000000;
+  color: white;
 }
 
 .profilePageCol {
@@ -131,8 +127,8 @@ hr {
   height: 400px;
   margin: 0 auto;
   margin-top: 120px;
-  background-color: rgba(255, 255, 255, 0.425);
-  border: 1px solid #000000;
+  background-color: #0d1e63;
+  border: 1px solid white;
   box-sizing: border-box;
   border-radius: 10px;
 }

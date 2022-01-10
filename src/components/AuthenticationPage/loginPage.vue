@@ -103,7 +103,7 @@ export default {
     },
     loginUser() {
       axios
-        .post("http://192.168.0.24:5000/api/auth", {
+        .post("http://127.0.0.1:5000/api/auth", {
           username: this.userCredentials.username,
           password: this.userCredentials.password,
         })
@@ -129,8 +129,14 @@ export default {
 </script>
 
 <style scoped>
-.formDiv {
+body{
+  color: white;
+}
+.formDiv{
   padding: 0px 200px 0px 200px;
+}
+.h-80{
+  background: #0d1e63;
 }
 .error_message {
   color: rgb(129, 0, 0);
@@ -153,8 +159,8 @@ input[type="password"] {
   box-sizing: border-box;
 }
 button {
-  background-color: #8ebf42;
-  color: white;
+  background-color: white;
+  color: #0d1e63;
   padding: 14px 0;
   margin: 10px 0;
   border: none;
@@ -167,6 +173,8 @@ h1 {
 }
 button:hover {
   opacity: 0.8;
+  background: #FFCC00;
+  color: black;
 }
 @media screen and (max-width: 300px) {
   span.psw {

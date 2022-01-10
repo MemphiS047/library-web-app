@@ -42,6 +42,7 @@ export default {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+  border-color: white;
 }
 .announcementTitle {
   /* A Guide on How to Use Library Books */
@@ -55,7 +56,7 @@ export default {
   font-weight: normal;
   font-size: 25px;
   line-height: 27px;
-  color: #000000;
+  color: white;
 }
 .announcementSummary {
   position: relative;
@@ -69,21 +70,6 @@ export default {
   font-weight: normal;
   font-size: 18px;
   line-height: 20px;
-  color: #000000;
-}
-.readMoreLink {
-  width: 88px;
-  height: 20px;
-  left: 1153px;
-  top: 172px;
-  padding: 0px 10px 0px 10px;
-  cursor: pointer;
-  font-family: Manjari;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 20px;
-  /* identical to box height */
-  color: #0d1e63;
+  color: white;
 }
 </style>

@@ -49,7 +49,7 @@ export default {
     borrow() {
       console.log(this.borrow_req);
       axios
-        .post("http://192.168.0.24:5000/api/borrow", {
+        .post("http://127.0.0.1:5000/api/borrow", {
           book_id: this.borrow_req.book_id,
           reserv_datetime: this.borrow_req.reserv_datetime,
           duration: this.borrow_req.duration,
@@ -118,7 +118,7 @@ button {
   height: 100px;
   padding: 20px !important;
   margin-top: 20px !important;
-  border: 1px solid #000000;
+  border: 1px solid white;
   box-sizing: border-box;
   border-radius: 10px;
 }
@@ -133,7 +133,7 @@ button {
   font-weight: normal;
   font-size: 16px;
   line-height: 27px;
-  color: #000000;
+  color: white;
 }
 
 .resourceTitle {
@@ -147,13 +147,13 @@ button {
   font-weight: normal;
   font-size: 22px;
   line-height: 27px;
-  color: #000000;
+  color: white;
 }
 button[disabled=""],
 button:disabled {
   background-color: rgb(255, 0, 0) !important;
 }
 button:disabled {
-  background-color: red !important;
+  background-color: grey !important;
 }
 </style>

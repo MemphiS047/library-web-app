@@ -92,7 +92,7 @@ export default {
   methods: {
     submitForm() {
       axios
-        .post("http://192.168.0.24:5000/api/managebooks", {
+        .post("http://127.0.0.1:5000/api/managebooks", {
           book_name: this.bookName,
           author: this.bookAuthor,
           Publisher: this.bookPublisher,
@@ -128,12 +128,11 @@ export default {
 .defaultBtn {
   width: 107px;
   height: 50px;
-  background-color: #0d1e63 !important;
-  color: #ffff;
+  color: #0d1e63;
   font-size: 20px;
   font-weight: normal;
 
-  background: #ffff;
+  background-color: white;
   border: 1px solid #0d1e63;
   box-sizing: border-box;
   border-radius: 15px;
@@ -143,6 +142,7 @@ export default {
 h5 {
   font-weight: 400;
   padding: 0px !important;
+  color: white;
 }
 .qualificationsDiv {
   margin-top: 35px !important;
@@ -157,6 +157,7 @@ h5 {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+  background: #0d1e63;
 }
 
 .openPositionTitle {
