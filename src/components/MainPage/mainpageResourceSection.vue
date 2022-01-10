@@ -11,7 +11,7 @@
           </div>
           <div>
             <label class="linkArticle"
-              ><a class="aLinkHref" href="{{link}}">Link</a></label
+              ><a class="aLinkHref" :href="link">Link</a></label
             >
           </div>
         </div>

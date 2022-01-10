@@ -165,7 +165,7 @@ export default {
 
 <style scoped>
 .error_message {
-  color: rgb(129, 0, 0);
+  color: red;
   font-weight: bold;
   font-size: 17px;
 }

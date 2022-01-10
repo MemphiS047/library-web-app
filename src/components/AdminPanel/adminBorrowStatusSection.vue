@@ -90,6 +90,7 @@ export default {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+  border-color: white;
 }
 .resourceAuthor {
   width: 419px;
@@ -102,7 +103,7 @@ export default {
   font-weight: normal;
   font-size: 16px;
   line-height: 27px;
-  color: #000000;
+  color: white
 }
 
 .resourceTitle {
@@ -116,7 +117,7 @@ export default {
   font-weight: normal;
   font-size: 22px;
   line-height: 27px;
-  color: #000000;
+  color: white;
 }
 button[disabled="disabled"],
 button:disabled {
