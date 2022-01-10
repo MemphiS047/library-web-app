@@ -92,7 +92,7 @@ export default {
   methods: {
     submitForm() {
       axios
-        .post("http://127.0.0.1:5000/api/managebooks", {
+        .post("http://192.168.0.24:5000/api/managebooks", {
           book_name: this.bookName,
           author: this.bookAuthor,
           Publisher: this.bookPublisher,

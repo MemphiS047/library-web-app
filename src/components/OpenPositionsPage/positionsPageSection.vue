@@ -96,7 +96,7 @@ export default {
     apply() {
       console.log(this.$store.state.userid);
       axios
-        .post("http://127.0.0.1:5000/api/apply", {
+        .post("http://192.168.0.24:5000/api/apply", {
           job_id: this.$props.jobId,
           user_id: this.$store.state.userid,
           respond: "waiting",

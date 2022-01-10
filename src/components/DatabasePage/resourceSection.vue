@@ -49,7 +49,7 @@ export default {
     borrow() {
       console.log(this.borrow_req);
       axios
-        .post("http://127.0.0.1:5000/api/borrow", {
+        .post("http://192.168.0.24:5000/api/borrow", {
           book_id: this.borrow_req.book_id,
           reserv_datetime: this.borrow_req.reserv_datetime,
           duration: this.borrow_req.duration,

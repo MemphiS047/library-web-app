@@ -173,7 +173,7 @@ export default {
   },
   mounted: function () {
     console.log("DENEME");
-    axios.get("http://127.0.0.1:5000/api/traffic").then((response) => {
+    axios.get("http://192.168.0.24:5000/api/traffic").then((response) => {
       console.log(response.data);
       this.lib1_traffic = response.data["lib1_traffic"];
       this.lib2_traffic = response.data["lib2_traffic"];
@@ -185,7 +185,7 @@ export default {
       this.changeColor2();
       this.changeColor3();
     });
-    axios.get("http://127.0.0.1:5000/api/trafficComp").then((response) => {
+    axios.get("http://192.168.0.24:5000/api/trafficComp").then((response) => {
       console.log(response.data);
       this.comp1 = response.data["comp1_available"];
       this.comp2 = response.data["comp2_available"];

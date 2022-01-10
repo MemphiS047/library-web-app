@@ -49,7 +49,7 @@ export default {
     return_book() {
       // book_id = this.$props.bookId
       axios
-        .delete("http://127.0.0.1:5000/api/borrow", {
+        .delete("http://192.168.0.24:5000/api/borrow", {
           data: {
             reservation_id: this.$props.reservationId,
             book_id: this.$props.bookId,

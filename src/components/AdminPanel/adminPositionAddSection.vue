@@ -82,7 +82,7 @@ export default {
   methods: {
     submitForm() {
       axios
-        .post("http://127.0.0.1:5000/api/managepositions", {
+        .post("http://192.168.0.24:5000/api/managepositions", {
           job_title: this.jobTitle,
           Job_description: this.jobDescription,
           payment: this.payment,

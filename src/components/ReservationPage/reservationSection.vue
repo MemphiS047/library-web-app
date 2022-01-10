@@ -199,7 +199,7 @@ export default {
     reserveRoom(hour) {
       this.err_messages["err_room_full"] = "";
       axios
-        .post("http://127.0.0.1:5000/api/managereserveroom", {
+        .post("http://192.168.0.24:5000/api/managereserveroom", {
           room_id: 1,
           reservedBy: this.$store.state.userid,
           length: 1,
