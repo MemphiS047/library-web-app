@@ -35,7 +35,7 @@ export default {
 .announcemenetsDiv {
   /* Frame 24 */
   width: 100%;
-  height: 230px;
+  /* height: 170px; */
   padding: 30px;
   margin-top: 20px !important;
   /* margin-bottom: 20px !important; */
@@ -60,7 +60,7 @@ export default {
 .announcementSummary {
   position: relative;
   width: 1207px;
-  height: 102px;
+  /* height: 102px; */
   left: 0px;
   top: 28px;
   padding: 0px 10px 0px 10px;

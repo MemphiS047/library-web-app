@@ -62,11 +62,12 @@ export default {
       this.errMessages["err_no_email"] = "";
     },
     setMessages() {
-      if (!this.userCredentials.password) {
+      if (!this.userCredentials.password && !this.userCredentials.username) {
         this.errMessages["err_no_pass"] = "Password required.";
-      }
-      if (!this.userCredentials.username) {
         this.errMessages["err_no_email"] = "Username required.";
+        return true;
+      } else {
+        return false;
       }
     },
     redirectPage() {
@@ -78,14 +79,19 @@ export default {
     },
     submitForm() {
       this.resetMessages();
-      this.setMessages();
-      if (
+      if (this.setMessages()) {
+        console.log("Error need to enter username and password");
+      } else if (
         !this.errMessages["err_invalid_credentials"] != "" ||
         !this.errMessages["err_no_pass"] != "" ||
         !this.errMessages["err_no_email"] != ""
       ) {
-        this.loginUser();
-        this.redirectPage();
+        if (this.loginUser()) {
+          this.redirectPage();
+        }
+        else{
+          console.log("Couldn't find any user with these credentials");
+        }
       }
     },
     setUserState(res) {
@@ -108,8 +114,10 @@ export default {
             this.$store.commit("login");
             console.log(res.data);
             this.redirectPage();
+            return true;
           } else {
             this.errMessages["err_invalid_credentials"] = res.data["message"];
+            return false;
           }
         })
         .catch((error) => {
@@ -121,7 +129,7 @@ export default {
 </script>
 
 <style scoped>
-.formDiv{
+.formDiv {
   padding: 0px 200px 0px 200px;
 }
 .error_message {

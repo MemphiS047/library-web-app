@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-row bd-highlight mb-3 searchFormFlex">
     <div id="searchInputflex" class="p-2 bd-highlight">
-      <form @submit.prevent="submitSearchForm">
+      <form @submit.prevent="formSubmitButton">
         <div class="form-group">
           <input
             v-model="searchInput"
@@ -34,15 +34,8 @@ export default {
     };
   },
   methods: {
-    submitSearchForm() {
-      console.log(this.searchInput);
-    },
-
-    // When searchButton is clicked (catching with @click event) this
-    // function is triggered which triggers the submitSearchForm method
-    // tied to form element which can be found in the <form> elements property
     formSubmitButton() {
-      this.submitSearchForm();
+      this.$emit("searchstring", this.searchInput);
     },
   },
 };
