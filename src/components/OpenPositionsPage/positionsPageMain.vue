@@ -48,6 +48,9 @@ export default {
     };
   },
   methods: {
+
+    // Method ran on submit form, apply function called on this
+    // method radio button managment is also done on this method as well
     submitForm() {
       console.log(this.$store.state.userid);
 

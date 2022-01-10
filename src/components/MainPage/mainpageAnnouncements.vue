@@ -30,6 +30,10 @@ export default {
       queryResult: [],
     };
   },
+
+  // When this component loaded it directly loads the announcements
+  // stored on the database whenever user opens this components
+  // this function directly called and sends request to API
   mounted: function () {
     axios
       .get("http://192.168.0.24:5000/api/manageannouncements")

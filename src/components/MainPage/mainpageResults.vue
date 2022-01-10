@@ -32,8 +32,9 @@ export default {
       queryResult: [],
     };
   },
+
+  // 
   mounted : function(){
-      console.log("DENEME")
       console.log(this.$props.searchResults);
   }
 };

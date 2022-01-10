@@ -63,6 +63,7 @@ export default {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+  background: #0d1e63;
 }
 .resourceAuthor {
   width: 419px;

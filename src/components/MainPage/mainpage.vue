@@ -101,6 +101,10 @@ export default {
     };
   },
   methods: {
+
+    // Form submit function, when form submitted
+    // this function ran, sends request to API to obtain
+    // google scholar API search results
     formSubmitButton() {
       this.isSearched = true;
       console.log(this.searchString);

@@ -110,6 +110,12 @@ export default {
       barColor3: "",
     };
   },
+
+  // Whenever the width or color changes computed called
+  // to dynamically reacts to these changes, each element 
+  // have its own function own variable and computed function
+  // instead of creating a componet for each of them creating elements
+  // is much more efficient
   computed: {
     computedWith1: function () {
       return this.width1;
@@ -133,6 +139,8 @@ export default {
       return this.barColor3;
     },
   },
+  // Width and colors assigned according to conditions and recieved random numbers
+  // for simulating computer occpuency, and density on the library from the Flask API
   methods: {
     changeWidth1(random_number) {
       this.width1 = `${random_number}%`;
@@ -171,6 +179,8 @@ export default {
       }
     },
   },
+
+  // On mount all of the above computations are applied to the HTML elements
   mounted: function () {
     console.log("DENEME");
     axios.get("http://192.168.0.24:5000/api/traffic").then((response) => {
@@ -277,7 +287,6 @@ export default {
 }
 .image {
   height: 50px;
-  weight: 50px;
 }
 .column2 {
 /*   justify-content: center;

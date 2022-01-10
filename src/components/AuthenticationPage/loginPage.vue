@@ -56,11 +56,16 @@ export default {
     };
   },
   methods: {
+    // Resets the form validation error messages
+    // for preventing overrite
     resetMessages() {
       this.errMessages["err_invalid_credentials"] = "";
       this.errMessages["err_no_pass"] = "";
       this.errMessages["err_no_email"] = "";
     },
+
+    // Sets the messages for form validation for showing
+    // user what he/she did wrong
     setMessages() {
       if (!this.userCredentials.password && !this.userCredentials.username) {
         this.errMessages["err_no_pass"] = "Password required.";
@@ -70,6 +75,10 @@ export default {
         return false;
       }
     },
+
+    // Redirecs user according to admin state
+    // if he/she is admin then redirects them to
+    // admin panel if not then users is student
     redirectPage() {
       if (this.$store.state.is_admin == 1) {
         this.$router.push(this.$route.query.redirect || "/admin");
@@ -77,6 +86,9 @@ export default {
         this.$router.push(this.$route.query.redirect || "/");
       }
     },
+
+    // Login submit form all the error message checking, 
+    // page redirections, and login validations are done
     submitForm() {
       this.resetMessages();
       if (this.setMessages()) {
@@ -94,6 +106,8 @@ export default {
         }
       }
     },
+
+    // Sets the user state if they successfully logged in
     setUserState(res) {
       this.$store.state.userid = res.data["credentials"]["userid"];
       this.$store.state.username = res.data["credentials"]["username"];
@@ -101,6 +115,8 @@ export default {
       this.$store.state.lastname = res.data["credentials"]["lastname"];
       this.$store.state.is_admin = res.data["credentials"]["is_admin"];
     },
+
+    // All the above function ran on the below method 
     loginUser() {
       axios
         .post("http://192.168.0.24:5000/api/auth", {

@@ -25,9 +25,6 @@ const store = createStore({
         update_lastname(state, lastname) {
             state.lastname = lastname;
         },
-        // authenticate(state, { is_authenticated }) {
-        //     localStorage.setItem = { 'is_authenticated': is_authenticated };
-        // }
         login(state) {
             state.is_authenticated = true;
         },

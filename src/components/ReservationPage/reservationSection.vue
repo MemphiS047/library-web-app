@@ -196,6 +196,9 @@ export default {
   },
   props: ["date", "reservedDates"],
   methods: {
+
+    // Reservation is done on this section, with a request to the API
+    // reservation is done with specified parameters
     reserveRoom(hour) {
       this.err_messages["err_room_full"] = "";
       axios
@@ -218,6 +221,9 @@ export default {
       console.log("DISABELING BUTTONS");
       this.$props.reservedDates[hour] = true;
     },
+
+    // Button text changes according to given HR parameters
+    // on template section of this components
     buttonText(hr) {
       if (this.$props.reservedDates[hr] == true) {
         return "Not Available"

@@ -102,17 +102,23 @@ export default {
     };
   },
   methods: {
+
+    // Email validation method
     validEmail: function (email) {
       var re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
+
+    // Resets the message just like in login components
     resetMessages() {
       this.errMessages["err_acc_exists"] = "";
       this.errMessages["err_no_pass"] = "";
       this.errMessages["err_no_email"] = "";
       this.errMessages["err_invalid_email"] = "";
     },
+    
+    // Sets the error messages if no password or username given
     setMessages() {
       if (!this.user.password) {
         this.errMessages["err_no_pass"] = "Password required.";
@@ -123,6 +129,8 @@ export default {
         this.errMessages["err_invalid_email"] = "Valid username required.";
       }
     },
+
+    // Submit form method
     submitForm() {
       this.resetMessages();
       this.setMessages();
@@ -136,6 +144,9 @@ export default {
       }
     },
 
+    // Request is send to API on this method for user registireation
+    // In additon form validaiton methods and redirection methods 
+    // ran on thie method as well
     registerUser() {
       axios
         .post("http://192.168.0.24:5000/api/register", {

@@ -27,6 +27,8 @@ export default {
   data() {
     return {};
   },
+
+  // No method needed in this components
   methods: {},
 };
 </script>

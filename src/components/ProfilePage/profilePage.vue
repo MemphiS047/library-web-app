@@ -59,6 +59,9 @@ export default {
       is_borrowed: false,
     };
   },
+
+  // Obtaines borrowed books by the logged in user
+  // to visualize what resources they borrowed etc.
   mounted: function () {
     var username = this.format_username();
     console.log(username);
@@ -71,6 +74,9 @@ export default {
         console.log(this.queryResult);
       });
   },
+
+  // Formats username since the required method on the API
+  // gets the parameter without strings after @
   methods : { 
     format_username(){
       var username = this.$store.state.username;

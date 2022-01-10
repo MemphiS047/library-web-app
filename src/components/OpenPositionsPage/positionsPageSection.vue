@@ -85,6 +85,8 @@ export default {
     };
   },
   methods: {
+
+    // If user applies fpr a job is_applied changes accordingly
     change_style() {
       this.is_defualt = false;
       if (this.$props.appliedJob == this.$props.jobId) {
@@ -93,6 +95,9 @@ export default {
         this.is_blocked = true;
       }
     },
+
+    // Apply function that sends request to
+    // API to create an application for the detemrined open position
     apply() {
       console.log(this.$store.state.userid);
       axios
@@ -111,6 +116,7 @@ export default {
         });
     },
   },
+
   mounted: function () {
     console.log("Auth status " + this.$store.state.is_authenticated);
     if (this.$store.state.is_authenticated == false) {

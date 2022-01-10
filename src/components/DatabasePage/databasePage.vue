@@ -54,10 +54,15 @@ export default {
     };
   },
   methods: {
+
+    // Submit form method for obtaining search results
     submitForm() {
       this.queryResult = [];
       this.getResults();
     },
+
+    // Method that sends request to Flask API with specified
+    // search_string parameters in order to get results as JSON
     getResults() {
       axios
         .get("http://192.168.0.24:5000/api/managebooks", {

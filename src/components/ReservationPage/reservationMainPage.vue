@@ -56,6 +56,8 @@ export default {
     reservationSection,
   },
   methods: {
+
+    // Disables if the specified time interval is not avialable
     disableAllButtons() {
       var today = new Date();
       var day = today.getDate();
@@ -75,6 +77,9 @@ export default {
         }       
       }
     }, 
+
+    // Remaps the reserved times in order to disable all buttons
+    // acording to mapped_times variable with key , value as booleans
     mapReservedTimes() {
       const mapped_times_keys = Object.keys(this.mapped_times);
       for (let j = 0; j < this.queryResult["queryLst"].length; j++) {
@@ -91,12 +96,18 @@ export default {
       }
       this.disableAllButtons();
     },
+
+    // Gets the day of the clicked item on the calendar
     dayClicked(day) {
       this.selectedDay = day.id;
       console.log(this.selectedDay);
       this.getReservedRooms(this.selectedDay);
       this.currentDate = day.ariaLabel;
     },
+
+    // Mapping is done on this function, by requesting resered times 
+    // information available times and occupied times are mapped to the
+    // mapped_times
     getReservedRooms(day) {
       this.mapped_times = {
         "09": false,
@@ -130,6 +141,10 @@ export default {
         });
     },
   },
+  
+
+  // On mount to visualize the current date on top of the page below months 
+  // array is used.
   mounted: function () {
     var months=new Array();
     months[1]="Ocak";
